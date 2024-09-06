@@ -1,4 +1,4 @@
-package com.oops.OvertureOfPromachina.application.entity;
+package com.oops.OvertureOfPromachina.application.entity.user;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,19 +16,22 @@ import lombok.Setter;
 public class User {
 
     @Id
-    @Column(name = "nick_name")
-    private String nick_name;
-
-    @Id
+    @GeneratedValue
     @Column(name = "user_id")
-    private String user_id;
+    private Long id;
 
-    @Column(name = "pwd")
+    @Column(unique = true, nullable = false)
+    private String nickname;
+
+    @Column(unique = true, nullable = false)
+    private String loginId;
+
+    @Column(nullable = false)
     private String pwd;
 
-    @Column(name = "accout")
-    private String accout;
+    @Column(nullable = false)
+    private String account;
 
-    @Column(name = "pri_key")
-    private String pri_key;
+    @Column(nullable = false)
+    private String priKey;
 }
