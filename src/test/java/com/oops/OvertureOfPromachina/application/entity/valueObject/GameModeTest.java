@@ -1,7 +1,7 @@
 package com.oops.OvertureOfPromachina.application.entity.valueObject;
 
-import com.oops.OvertureOfPromachina.application.entity.room.valueObject.GameMode;
-import com.oops.OvertureOfPromachina.application.entity.room.valueObject.GameModeEnum;
+import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameMode;
+import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameModeEnum;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

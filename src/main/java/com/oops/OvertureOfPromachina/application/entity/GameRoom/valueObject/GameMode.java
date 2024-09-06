@@ -1,4 +1,4 @@
-package com.oops.OvertureOfPromachina.application.entity.room.valueObject;
+package com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject;
 
 
 import jakarta.persistence.Embeddable;
