@@ -1,9 +1,7 @@
 package com.oops.OvertureOfPromachina.application.entity.user;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.oops.OvertureOfPromachina.application.entity.user.valueObject.*;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,18 +18,27 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    private String nickname;
+    @Embedded
+    private UserNickname nickname;
 
-    @Column(unique = true, nullable = false)
-    private String loginId;
+    @Embedded
+    private UserLoginId loginId;
 
-    @Column(nullable = false)
-    private String pwd;
+    @Embedded
+    private UserPassword pwd;
 
-    @Column(nullable = false)
-    private String account;
+    @Embedded
+    private UserAccount account;
 
-    @Column(nullable = false)
-    private String priKey;
+    @Embedded
+    private UserPrivateKey priKey;
+
+    public User(String  nickname, String  loginId, String  pwd, String  account,
+                String  priKey) {
+        this.nickname = new UserNickname(nickname);
+        this.loginId = new UserLoginId(loginId);
+        this.pwd = new UserPassword(pwd);
+        this.account = new UserAccount(account);
+        this.priKey = new UserPrivateKey(priKey);
+    }
 }
