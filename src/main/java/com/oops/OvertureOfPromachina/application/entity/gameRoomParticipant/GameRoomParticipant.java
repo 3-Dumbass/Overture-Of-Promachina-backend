@@ -1,7 +1,7 @@
 package com.oops.OvertureOfPromachina.application.entity.gameRoomParticipant;
 
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.GameRoom;
-import com.oops.OvertureOfPromachina.application.entity.User;
+import com.oops.OvertureOfPromachina.application.entity.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

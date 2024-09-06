@@ -1,6 +1,7 @@
 package com.oops.OvertureOfPromachina.application.entity.GameRoom;
 
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameMode;
+import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameModeEnum;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -18,7 +19,7 @@ public class GameRoom {
     @Embedded
     private GameMode gameMode;
 
-    public GameRoom(GameMode gameMode) {
-        this.gameMode = gameMode;
+    public GameRoom(GameModeEnum gameMode) {
+        this.gameMode = new GameMode(gameMode);
     }
 }
