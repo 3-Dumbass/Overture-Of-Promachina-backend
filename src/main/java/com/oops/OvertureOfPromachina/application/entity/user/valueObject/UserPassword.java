@@ -14,11 +14,11 @@ public class UserPassword {
         this.password = password;
     }
 
-    private void checkValid(String nickname){
-        if (nickname==null){
+    private void checkValid(String value){
+        if (value==null){
             throw new IllegalArgumentException("닉네임은 null이 될 수 없습니다");
         }
-        if(!nickname.isBlank()){
+        if(!value.isBlank()){
             throw new IllegalArgumentException("허용되지 않는 닉네임 형식입니다");
         }
     }
