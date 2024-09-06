@@ -1,9 +1,16 @@
 package com.oops.OvertureOfPromachina.application.entity.user.valueObject;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.Objects;
 
+@Embeddable
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 public class UserPassword {
 
     @Column(nullable = false)
@@ -18,7 +25,7 @@ public class UserPassword {
         if (value==null){
             throw new IllegalArgumentException("패스워드는 null이 될 수 없습니다");
         }
-        if(!value.isBlank()){
+        if(value.isBlank()){
             throw new IllegalArgumentException("허용되지 않는 패스워드 형식입니다");
         }
     }
