@@ -1,5 +1,6 @@
-package com.oops.OvertureOfPromachina.domain;
+package com.oops.OvertureOfPromachina.application.entity;
 
+import com.oops.OvertureOfPromachina.application.entity.user.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
