@@ -1,4 +1,5 @@
-package com.oops.OvertureOfPromachina.application.entity.valueObject.room.valueObject;
+package com.oops.OvertureOfPromachina.application.entity.room.valueObject;
+
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;
