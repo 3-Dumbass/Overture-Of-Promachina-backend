@@ -1,4 +1,4 @@
-package com.oops.OvertureOfPromachina.application.entity.valueObject.gameroom;
+package com.oops.OvertureOfPromachina.application.entity.valueObject.gameRoom;
 
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameMode;
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameModeEnum;
