@@ -16,10 +16,10 @@ public class UserPassword {
 
     private void checkValid(String value){
         if (value==null){
-            throw new IllegalArgumentException("닉네임은 null이 될 수 없습니다");
+            throw new IllegalArgumentException("패스워드는 null이 될 수 없습니다");
         }
         if(!value.isBlank()){
-            throw new IllegalArgumentException("허용되지 않는 닉네임 형식입니다");
+            throw new IllegalArgumentException("허용되지 않는 패스워드 형식입니다");
         }
     }
 

@@ -24,10 +24,10 @@ public class UserLoginId {
         String pattern = "^[a-zA-Z]+[0-9a-zA-Z]+";
 
         if (loginId==null){
-            throw new IllegalArgumentException("id는 null이 될 수 없습니다");
+            throw new IllegalArgumentException("아이디는 null이 될 수 없습니다");
         }
         if(!loginId.matches(pattern)){
-            throw new IllegalArgumentException("허용되지 않는 닉네임 형식입니다");
+            throw new IllegalArgumentException("허용되지 않는 아이디 형식입니다");
         }
     }
 }
