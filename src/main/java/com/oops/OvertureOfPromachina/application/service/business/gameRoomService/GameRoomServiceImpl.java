@@ -8,6 +8,8 @@ import com.oops.OvertureOfPromachina.application.service.domain.gameRoom.GameRoo
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class GameRoomServiceImpl implements GameRoomService{
@@ -21,6 +23,21 @@ public class GameRoomServiceImpl implements GameRoomService{
         gameRoomRepository.save(gameRoom);
         //TODO: 제작한 유저가 해당 룸에 입장하는 부분 추가
         return gameRoom.getId();
+    }
+
+    @Override
+    public List<GameRoom> getGameRoomList(Long page, Long size) {
+        return null;
+    }
+
+    @Override
+    public Long joinToGameRoom(GameRoom gameRoom, User user) {
+        return null;
+    }
+
+    @Override
+    public void leaveGameRoom(User user) {
+
     }
 
 
