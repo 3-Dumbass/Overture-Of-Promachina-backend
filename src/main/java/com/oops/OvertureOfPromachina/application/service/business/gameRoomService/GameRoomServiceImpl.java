@@ -26,11 +26,6 @@ public class GameRoomServiceImpl implements GameRoomService{
     }
 
     @Override
-    public List<GameRoom> getGameRoomList(Long page, Long size) {
-        return null;
-    }
-
-    @Override
     public Long joinToGameRoom(GameRoom gameRoom, User user) {
         return null;
     }
