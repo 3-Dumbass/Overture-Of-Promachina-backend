@@ -1,5 +1,6 @@
 package com.oops.OvertureOfPromachina.application.service.business.gameRoomService;
 
+import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameModeEnum;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 
 public interface GameRoomService {
@@ -9,5 +10,5 @@ public interface GameRoomService {
      * @param user 게임룸을 제작하고자 하는 유저
      * @return 제작된 게임룸 id
      */
-    Long makeRoom(User user);
+    Long makeRoom(User user, GameModeEnum gameMode);
 }
