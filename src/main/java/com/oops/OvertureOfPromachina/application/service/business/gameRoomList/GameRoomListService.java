@@ -1,4 +1,4 @@
-package com.oops.OvertureOfPromachina.application.service.business.gameRoomListService;
+package com.oops.OvertureOfPromachina.application.service.business.gameRoomList;
 
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.GameRoom;
 

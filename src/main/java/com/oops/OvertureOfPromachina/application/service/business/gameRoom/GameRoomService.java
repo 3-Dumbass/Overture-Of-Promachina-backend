@@ -1,10 +1,8 @@
-package com.oops.OvertureOfPromachina.application.service.business.gameRoomService;
+package com.oops.OvertureOfPromachina.application.service.business.gameRoom;
 
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.GameRoom;
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameModeEnum;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
-
-import java.util.List;
 
 public interface GameRoomService {
 

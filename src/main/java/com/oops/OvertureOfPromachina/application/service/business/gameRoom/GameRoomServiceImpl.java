@@ -1,4 +1,4 @@
-package com.oops.OvertureOfPromachina.application.service.business.gameRoomService;
+package com.oops.OvertureOfPromachina.application.service.business.gameRoom;
 
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.GameRoom;
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameModeEnum;
@@ -7,8 +7,6 @@ import com.oops.OvertureOfPromachina.application.repository.gameRoom.GameRoomRep
 import com.oops.OvertureOfPromachina.application.service.domain.gameRoom.GameRoomDomainLogic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
