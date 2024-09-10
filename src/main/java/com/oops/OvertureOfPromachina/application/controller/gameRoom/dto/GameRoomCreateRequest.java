@@ -11,7 +11,7 @@ import lombok.Getter;
 @Getter
 public class GameRoomCreateRequest {
     @NotNull
-    private Long UserId;
+    private Long userId;
     @NotNull
     private GameModeEnum gameMode;
 }
