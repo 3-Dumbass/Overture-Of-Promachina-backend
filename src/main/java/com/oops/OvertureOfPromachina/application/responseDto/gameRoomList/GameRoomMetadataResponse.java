@@ -1,4 +1,4 @@
-package com.oops.OvertureOfPromachina.application.dto.gameRoomList;
+package com.oops.OvertureOfPromachina.application.responseDto.gameRoomList;
 
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameModeEnum;
 import lombok.AllArgsConstructor;

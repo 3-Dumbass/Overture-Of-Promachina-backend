@@ -1,4 +1,4 @@
-package com.oops.OvertureOfPromachina.application.dto.pagination;
+package com.oops.OvertureOfPromachina.application.responseDto.pagination;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

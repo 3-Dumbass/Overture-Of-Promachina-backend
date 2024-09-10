@@ -1,10 +1,7 @@
 package com.oops.OvertureOfPromachina.application.service.business.gameRoomList;
 
-import com.oops.OvertureOfPromachina.application.dto.gameRoomList.GameRoomMetadataResponse;
-import com.oops.OvertureOfPromachina.application.dto.pagination.PaginationResultResponse;
-import com.oops.OvertureOfPromachina.application.entity.GameRoom.GameRoom;
-
-import java.util.List;
+import com.oops.OvertureOfPromachina.application.responseDto.gameRoomList.GameRoomMetadataResponse;
+import com.oops.OvertureOfPromachina.application.responseDto.pagination.PaginationResultResponse;
 
 public interface GameRoomListService {
     /**

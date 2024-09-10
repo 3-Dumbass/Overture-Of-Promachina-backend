@@ -1,16 +1,14 @@
 package com.oops.OvertureOfPromachina.application.service.business.gameRoomList;
 
-import com.oops.OvertureOfPromachina.application.dto.gameRoomList.GameRoomMetadataResponse;
-import com.oops.OvertureOfPromachina.application.dto.pagination.Pagination;
-import com.oops.OvertureOfPromachina.application.dto.pagination.PaginationResultResponse;
-import com.oops.OvertureOfPromachina.application.entity.GameRoom.GameRoom;
+import com.oops.OvertureOfPromachina.application.responseDto.gameRoomList.GameRoomMetadataResponse;
+import com.oops.OvertureOfPromachina.application.responseDto.pagination.Pagination;
+import com.oops.OvertureOfPromachina.application.responseDto.pagination.PaginationResultResponse;
 import com.oops.OvertureOfPromachina.application.repository.gameRoomList.GameRoomListRepository;
 import com.oops.OvertureOfPromachina.application.service.domain.pagination.PaginationDomainLogic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor

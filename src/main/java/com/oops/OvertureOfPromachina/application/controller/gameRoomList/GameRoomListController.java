@@ -1,7 +1,7 @@
 package com.oops.OvertureOfPromachina.application.controller.gameRoomList;
 
-import com.oops.OvertureOfPromachina.application.dto.gameRoomList.GameRoomMetadataResponse;
-import com.oops.OvertureOfPromachina.application.dto.pagination.PaginationResultResponse;
+import com.oops.OvertureOfPromachina.application.responseDto.gameRoomList.GameRoomMetadataResponse;
+import com.oops.OvertureOfPromachina.application.responseDto.pagination.PaginationResultResponse;
 import com.oops.OvertureOfPromachina.application.service.business.gameRoomList.GameRoomListService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
