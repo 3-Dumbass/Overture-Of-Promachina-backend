@@ -6,7 +6,7 @@ import com.oops.OvertureOfPromachina.application.entity.GameRoom.GameRoom;
 
 import java.util.List;
 
-interface GameRoomListService {
+public interface GameRoomListService {
     /**
      * 게임룸 리스트 가져오기
      * @param page 몇 번째 페이지인지(0부터 시작)

@@ -10,7 +10,7 @@ import java.util.List;
 import static com.oops.OvertureOfPromachina.application.entity.GameRoom.QGameRoom.gameRoom;
 
 @Repository
-public class DbGameRoomListRepository implements GameRoomListRepository{
+class DbGameRoomListRepository implements GameRoomListRepository{
 
     private final EntityManager em;
     private final JPAQueryFactory query;

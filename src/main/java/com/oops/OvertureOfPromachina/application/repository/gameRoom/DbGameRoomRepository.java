@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import static com.oops.OvertureOfPromachina.application.entity.gameRoomParticipant.QGameRoomParticipant.gameRoomParticipant;
 
 @Repository
-public class DbGameRoomRepository implements GameRoomRepository{
+class DbGameRoomRepository implements GameRoomRepository{
 
     private final EntityManager em;
     private final JPAQueryFactory query;

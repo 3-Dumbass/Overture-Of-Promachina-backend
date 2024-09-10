@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class GameRoomServiceImpl implements GameRoomService{
+class GameRoomServiceImpl implements GameRoomService{
 
     private final GameRoomDomainLogic gameRoomDomainLogic;
     private final GameRoomRepository gameRoomRepository;

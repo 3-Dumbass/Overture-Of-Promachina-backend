@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
-public class GameRoomListServiceImpl implements GameRoomListService{
+class GameRoomListServiceImpl implements GameRoomListService{
 
     private final GameRoomListRepository gameRoomListRepository;
     private final PaginationDomainLogic paginationDomainLogic;
