@@ -15,8 +15,8 @@ public class DbUserRepository implements UserRepository {
 
     @Override
     public String save(User user) {
-        em.persist(user);
 
+        em.persist(user);
         User user_insert = em.find(User.class, user.getId());
         return  user_insert.getLoginId().toString();
     }
