@@ -14,7 +14,8 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-
+    /** 유저 정보 저장
+     * 저장 성공시 True 반환 */
     public Boolean save(String LoginId, String Password, String Nickname, String Account, String PriKey){
 
         String insert_check = userRepository.save(new User(LoginId, Password, Nickname, Account, PriKey));
@@ -24,13 +25,13 @@ public class UserService {
 
     public Boolean DuplicateLoginId(String LoginId){
 
-        return null == userRepository.DuplicateCheckUser(LoginId);
+        return userRepository.DuplicateCheckUser(LoginId);
     }
 
 
     public Boolean DuplicateNickname(String Nickname){
 
-        return null == userRepository.DuplicateCheckNickname(Nickname);
+        return userRepository.DuplicateCheckNickname(Nickname);
     }
 
 
