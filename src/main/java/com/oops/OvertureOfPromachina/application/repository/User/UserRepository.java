@@ -1,4 +1,4 @@
-package com.oops.OvertureOfPromachina.repository.User;
+package com.oops.OvertureOfPromachina.application.repository.User;
 
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import org.springframework.data.util.Pair;
