@@ -27,7 +27,7 @@ public class GameRoomController {
     }
 
     @Operation(summary = "게임룸 제작", description = "유저가 게임룸을 제작한 후 입장합니다")
-    @PostMapping("/create")
+    @PostMapping("/join")
     public Long joinGameRoom(@RequestBody @Valid GameRoomJoinRequest gameRoomJoinRequest){
         User user = null;
         GameRoom gameRoom = null;
