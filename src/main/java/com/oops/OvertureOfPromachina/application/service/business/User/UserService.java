@@ -1,4 +1,4 @@
-package com.oops.OvertureOfPromachina.service.User;
+package com.oops.OvertureOfPromachina.application.service.business.User;
 
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.repository.User.UserRepository;
