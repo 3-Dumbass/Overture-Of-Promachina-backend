@@ -1,7 +1,7 @@
 package com.oops.OvertureOfPromachina.service.User;
 
 import com.oops.OvertureOfPromachina.application.entity.user.User;
-import com.oops.OvertureOfPromachina.repository.User.UserRepository;
+import com.oops.OvertureOfPromachina.application.repository.User.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
