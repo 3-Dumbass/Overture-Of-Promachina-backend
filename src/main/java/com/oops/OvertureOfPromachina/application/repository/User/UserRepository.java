@@ -15,13 +15,13 @@ public interface UserRepository {
     /** 중복 ID 체크
      * @param LoginId
      * @return Null or LoginId*/
-    String DuplicateCheckUser(String LoginId);
+    Boolean DuplicateCheckUser(String LoginId);
 
 
     /** 중복 Nickname 체크
      * @param Nickname
      * @return Null or Nickname*/
-    String DuplicateCheckNickname(String Nickname);
+    Boolean DuplicateCheckNickname(String Nickname);
 
 
     /** 인게임에서 사용할 Nickname 반환
