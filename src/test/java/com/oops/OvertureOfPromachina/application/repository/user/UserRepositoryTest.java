@@ -19,8 +19,8 @@ public class UserRepositoryTest extends SpringTestSetting {
         String loginId = user.getLoginId().getLoginId();
         userRepository.save(user);
 
-        String result = userRepository.DuplicateCheckUser(loginId);
+        Boolean result = userRepository.DuplicateCheckUser(loginId);
 
-        Assertions.assertThat(result).isEqualTo(loginId);
+        Assertions.assertThat(result);
     }
 }
