@@ -13,25 +13,25 @@ public interface UserRepository {
 
 
     /** 중복 ID 체크
-     * @param LoginId
+     * @param login_id
      * @return Null or LoginId*/
-    Boolean DuplicateCheckUser(String LoginId);
+    Boolean DuplicateCheckUser(String login_id);
 
 
     /** 중복 Nickname 체크
-     * @param Nickname
+     * @param nickname
      * @return Null or Nickname*/
-    Boolean DuplicateCheckNickname(String Nickname);
+    Boolean DuplicateCheckNickname(String nickname);
 
 
     /** 인게임에서 사용할 Nickname 반환
-     * @param LoginId
+     * @param login_id
      * @return Nickname*/
-    String FindNicknameByLoginID(String LoginId);
+    String FindNicknameByLoginID(String login_id);
 
 
     /** 코인 교환시 사용할 지갑주소 및 개인키 반환
-     * @param Nickname
+     * @param nickname
      * return Pair<Account, priKey></>*/
-    Pair<String, String> FindAccountAndPriKeyByNickname(String Nickname);
+    Pair<String, String> FindAccountAndPriKeyByNickname(String nickname);
 }

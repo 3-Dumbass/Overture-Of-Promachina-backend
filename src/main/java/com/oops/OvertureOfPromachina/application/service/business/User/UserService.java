@@ -16,33 +16,33 @@ public class UserService {
 
     /** 유저 정보 저장
      * 저장 성공시 True 반환 */
-    public Boolean save(String LoginId, String Password, String Nickname, String Account, String PriKey){
+    public Boolean save(String login_id, String password, String nickname, String account, String priKey){
 
-        String insert_check = userRepository.save(new User(LoginId, Password, Nickname, Account, PriKey));
+        String insert_check = userRepository.save(new User(login_id, password, nickname, account, priKey));
         return insert_check != null;
     }
 
 
-    public Boolean DuplicateLoginId(String LoginId){
+    public Boolean DuplicateLoginId(String login_id){
 
-        return userRepository.DuplicateCheckUser(LoginId);
+        return userRepository.DuplicateCheckUser(login_id);
     }
 
 
-    public Boolean DuplicateNickname(String Nickname){
+    public Boolean DuplicateNickname(String nickname){
 
-        return userRepository.DuplicateCheckNickname(Nickname);
+        return userRepository.DuplicateCheckNickname(nickname);
     }
 
 
-    public String FindNicknameByLoginId(String LoginId){
+    public String FindNicknameByLoginId(String login_id){
 
-        return userRepository.FindNicknameByLoginID(LoginId);
+        return userRepository.FindNicknameByLoginID(login_id);
     }
 
 
-    public Pair<String, String> FindAccountAndPriKeyByNickname(String Nickname){
+    public Pair<String, String> FindAccountAndPriKeyByNickname(String nickname){
 
-        return userRepository.FindAccountAndPriKeyByNickname(Nickname);
+        return userRepository.FindAccountAndPriKeyByNickname(nickname);
     }
 }
