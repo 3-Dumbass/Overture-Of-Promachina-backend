@@ -12,11 +12,17 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import static com.oops.OvertureOfPromachina.application.entity.user.QUser.user;
 
 @Repository
-@RequiredArgsConstructor
 public class DbUserRepository implements UserRepository {
 
     private final EntityManager em;
-    private final JPAQueryFactory query = new JPAQueryFactory(em);
+    private final JPAQueryFactory query;
+
+
+    public DbUserRepository(EntityManager em) {
+        this.em = em;
+        this.query = new JPAQueryFactory(em);
+    }
+
 
     @Override
     public String save(User user_save) {
@@ -71,7 +77,7 @@ public class DbUserRepository implements UserRepository {
     @Override
     public Pair<String, String> FindAccountAndPriKeyByNickname(String nickname) {
 
-        String login_id = query.select(user.loginId.loginId)
+        String account = query.select(user.account.account)
                 .from(user)
                 .where(user.nickname.nickname.eq(nickname))
                 .fetchOne();
@@ -81,6 +87,6 @@ public class DbUserRepository implements UserRepository {
                 .where(user.nickname.nickname.eq(nickname))
                 .fetchOne();
 
-        return Pair.of(login_id, priKey);
+        return Pair.of(account, priKey);
     }
 }
