@@ -12,11 +12,17 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import static com.oops.OvertureOfPromachina.application.entity.user.QUser.user;
 
 @Repository
-@RequiredArgsConstructor
 public class DbUserRepository implements UserRepository {
 
     private final EntityManager em;
-    private final JPAQueryFactory query = new JPAQueryFactory(em);
+    private final JPAQueryFactory query;
+
+
+    public DbUserRepository(EntityManager em) {
+        this.em = em;
+        this.query = new JPAQueryFactory(em);
+    }
+
 
     @Override
     public String save(User user_save) {
