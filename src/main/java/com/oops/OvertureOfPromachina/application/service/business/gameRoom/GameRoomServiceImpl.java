@@ -16,10 +16,9 @@ class GameRoomServiceImpl implements GameRoomService{
     private final GameRoomRepository gameRoomRepository;
 
     @Override
-    public Long makeRoom(User user, GameModeEnum gameMode) {
+    public Long makeRoom(GameModeEnum gameMode) {
         GameRoom gameRoom = gameRoomDomainLogic.makeGameRoom(gameMode);
         gameRoomRepository.save(gameRoom);
-        //TODO: 제작한 유저가 해당 룸에 입장하는 부분 추가
         return gameRoom.getId();
     }
 

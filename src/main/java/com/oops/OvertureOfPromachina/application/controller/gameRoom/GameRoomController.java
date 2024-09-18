@@ -19,14 +19,14 @@ public class GameRoomController {
     private final GameRoomService gameRoomService;
 
 
-    @Operation(summary = "게임룸 제작", description = "유저가 게임룸을 제작한 후 입장합니다")
+    @Operation(summary = "게임룸 제작", description = "게임룸을 제작합니다")
     @PostMapping("/create")
     public Long createGameRoom(@RequestBody @Valid GameRoomCreateRequest gameRoomCreateRequest){
         User user = null;
-        return gameRoomService.makeRoom(user, gameRoomCreateRequest.getGameMode());
+        return gameRoomService.makeRoom(gameRoomCreateRequest.getGameMode());
     }
 
-    @Operation(summary = "게임룸 제작", description = "유저가 게임룸을 제작한 후 입장합니다")
+    @Operation(summary = "게임룸 입장", description = "유저가 해당 게임룸에 입장합니다")
     @PostMapping("/join")
     public Long joinGameRoom(@RequestBody @Valid GameRoomJoinRequest gameRoomJoinRequest){
         User user = null;
