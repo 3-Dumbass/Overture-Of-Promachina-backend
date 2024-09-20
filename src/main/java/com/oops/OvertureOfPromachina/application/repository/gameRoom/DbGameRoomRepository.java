@@ -34,12 +34,4 @@ class DbGameRoomRepository implements GameRoomRepository{
     public GameRoom findById(Long id) {
         return em.find(GameRoom.class, id);
     }
-
-    @Override
-    public GameRoom findByUser(User user) {
-        return query.select(gameRoomParticipant.gameRoom)
-                .from(gameRoomParticipant)
-                .where(gameRoomParticipant.user.eq(user))
-                .fetchOne();
-    }
 }
