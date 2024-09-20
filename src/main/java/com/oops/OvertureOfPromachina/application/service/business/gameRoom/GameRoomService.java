@@ -12,6 +12,8 @@ public interface GameRoomService {
      */
     Long makeRoom(GameModeEnum gameMode);
 
+    GameRoom findGameRoomById(Long id);
+
     /**
      * 유저가 게임룸에 입장
      * @param gameRoom 입장할 게임룸

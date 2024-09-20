@@ -23,6 +23,11 @@ class GameRoomServiceImpl implements GameRoomService{
     }
 
     @Override
+    public GameRoom findGameRoomById(Long id) {
+        return gameRoomRepository.findById(id);
+    }
+
+    @Override
     public Long joinToGameRoom(GameRoom gameRoom, User user) {
         return null;
     }

@@ -1,7 +1,7 @@
 package com.oops.OvertureOfPromachina.application.controller.gameRoom;
 
 import com.oops.OvertureOfPromachina.application.controller.gameRoom.dto.GameRoomCreateRequest;
-import com.oops.OvertureOfPromachina.application.controller.gameRoom.dto.GameRoomJoinRequest;
+import com.oops.OvertureOfPromachina.application.controller.gameRoomRealTime.dto.GameRoomJoinRequest;
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.GameRoom;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.service.business.gameRoom.GameRoomService;
@@ -26,25 +26,5 @@ public class GameRoomController {
         Long result = gameRoomService.makeRoom(gameRoomCreateRequest.getGameMode());
         return ResponseEntity.ok()
                 .body(result);
-    }
-
-    @Operation(summary = "게임룸 입장", description = "유저가 해당 게임룸에 입장합니다")
-    @PostMapping("/join")
-    public ResponseEntity<Long> joinGameRoom(@RequestBody @Valid GameRoomJoinRequest gameRoomJoinRequest){
-        User user = null;
-        GameRoom gameRoom = null;
-        Long result = gameRoomService.joinToGameRoom(gameRoom, user);
-
-        return ResponseEntity.ok()
-                .body(result);
-    }
-
-    @Operation(summary = "게임룸 입장 가능 여부 확인", description = "유저가 해당 게임룸에 입장가능한지 확인 합니다")
-    @PostMapping("/join-check")
-    public ResponseEntity<Long> joinGameRoomCheck(@RequestBody @Valid GameRoomJoinRequest gameRoomJoinRequest){
-        User user = null;
-        GameRoom gameRoom = null;
-
-        return ResponseEntity.ok().body(null);
     }
 }
