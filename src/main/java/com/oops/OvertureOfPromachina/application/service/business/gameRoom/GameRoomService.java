@@ -3,6 +3,8 @@ package com.oops.OvertureOfPromachina.application.service.business.gameRoom;
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.GameRoom;
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameModeEnum;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
+import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.GameRoomRealTimeResponse;
+import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.data.GameRoomJoinData;
 
 public interface GameRoomService {
 
@@ -20,7 +22,7 @@ public interface GameRoomService {
      * @param user 입장할 유저
      * @return 입장된 게임룸의 id
      */
-    Long joinToGameRoom(GameRoom gameRoom, User user);
+    GameRoomRealTimeResponse<GameRoomJoinData> joinToGameRoom(GameRoom gameRoom, User user);
 
     /**
      * 유저가 참가중인 게임방을 나감
