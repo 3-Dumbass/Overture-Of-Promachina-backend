@@ -20,20 +20,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping
 @Slf4j
 @RequiredArgsConstructor
 public class GameRoomRealTimeController {
 
     private final GameRoomService gameRoomService;
-    @MessageMapping("/{roomId}")
+    @MessageMapping("/join/{roomId}")
     @SendTo("/room/{roomId}")
     public ResponseEntity<GameRoomRealTimeResponse<GameRoomJoinData>> joinGameRoom(@DestinationVariable Long roomId,
                                                                                    @RequestBody @Valid GameRoomJoinRequest gameRoomJoinRequest){
         User user = null;
         GameRoom gameRoom = gameRoomService.findGameRoomById(roomId);
         GameRoomRealTimeResponse<GameRoomJoinData> result = gameRoomService.joinToGameRoom(gameRoom, user);
-
         return ResponseEntity.ok()
                 .body(result);
     }
