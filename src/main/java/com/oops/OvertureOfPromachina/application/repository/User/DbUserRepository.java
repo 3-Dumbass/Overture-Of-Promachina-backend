@@ -22,67 +22,40 @@ public class DbUserRepository implements UserRepository {
 
 
     @Override
-    public String save(User user_save) {
+    public Long save(User user_save) {
 
         em.persist(user_save);
-        return  query.select(user.loginId.loginId)
-                .from(user)
-                .where(user.loginId.loginId.eq(user_save.getLoginId().getLoginId()))
-                .fetchOne();
+        return user_save.getId();
     }
 
 
-    /** LoginId 중복체크 */
     @Override
-    public String loginIdByLoginId(String login_id) {
+    public User userFind(String login_id, String password) {
 
-        return query.select(user.loginId.loginId)
+        return query.select(user)
+                .from(user)
+                .where(user.loginId.loginId.eq(login_id), user.pwd.password.eq(password))
+                .fetchFirst();
+    }
+
+
+    @Override
+    public User userFindByLogin(String login_id) {
+        return query.select(user)
                 .from(user)
                 .where(user.loginId.loginId.eq(login_id))
-                .fetchOne();
+                .fetchFirst();
     }
 
 
-    /** Nickname 중복체크 */
     @Override
-    public String nicknameByNickname(String nickname) {
+    public User userFindByNickname(String nickname) {
 
-        return query.select(user.nickname.nickname)
+        return query.select(user)
                 .from(user)
                 .where(user.nickname.nickname.eq(nickname))
-                .fetchOne();
+                .fetchFirst();
     }
 
-
-    /** login_id 기반 nickname 반환 */
-    @Override
-    public String nicknameByLoginId(String login_id) {
-
-        return query.select(user.nickname.nickname)
-                .from(user)
-                .where(user.loginId.loginId.eq(login_id))
-                .fetchOne();
-    }
-
-
-    /** Nickname 기반 지갑주소 반환 */
-    @Override
-    public String accountByNickname(String nickname) {
-
-        return query.select(user.account.account)
-                .from(user)
-                .where(user.nickname.nickname.eq(nickname))
-                .fetchOne();
-    }
-
-    /** Nickname 기반 개인키 반환 */
-    @Override
-    public String priKeyByNickname(String nickname) {
-
-        return query.select(user.priKey.privateKey)
-                .from(user)
-                .where(user.nickname.nickname.eq(nickname))
-                .fetchOne();
-    }
 
 }

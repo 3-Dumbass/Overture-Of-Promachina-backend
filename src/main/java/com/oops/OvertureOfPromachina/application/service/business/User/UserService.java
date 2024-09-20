@@ -3,7 +3,6 @@ package com.oops.OvertureOfPromachina.application.service.business.User;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.repository.User.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,12 +13,13 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+
     /** user 데이터 저장
      * 성공시 true
      * 실패시 false 반환 */
-    public Boolean save(String login_id, String Password, String Nickname, String Account, String PriKey){
+    public Boolean save(User user_data){
 
-        String insert_check = userRepository.save(new User(login_id, Password, Nickname, Account, PriKey));
+        Long insert_check = userRepository.save(user_data);
         return insert_check != null;
     }
 
@@ -29,7 +29,8 @@ public class UserService {
      * 실패시 false 반환 */
     public Boolean duplicateLoginId(String login_id){
 
-        return null == userRepository.loginIdByLoginId(login_id);
+        User login_check = userRepository.userFindByLogin(login_id);
+        return null == login_check;
     }
 
 
@@ -38,24 +39,28 @@ public class UserService {
      * 실패시 false 반환 */
     public Boolean duplicateNickname(String nickname){
 
-        return null == userRepository.nicknameByNickname(nickname);
+        User nickname_check = userRepository.userFindByNickname(nickname);
+        return null == nickname_check;
     }
 
 
-    /** login_id 기반 nickname 반환
-     * 성공시 nickname
+    /** login_id, password 기반 user_data 반환
+     * 성공시 user_data
      * 실패시 null */
-    public String findNicknameByLoginId(String login_id){
+    public User selectUserData(String login_id, String password){
 
-        return userRepository.nicknameByLoginId(login_id);
+        User user_data = userRepository.userFind(login_id, password);
+        return user_data;
     }
 
 
-    /** nickname 기반 account,priKey 반환
-     *  성공시 Pair<account, priKey>
-     *  실패시 flase */
-    public Pair<String, String> findAccountAndPriKeyByNickname(String nickname){
+    /** nickname 기반 user_data 반환
+     * 성공시 user_data
+     * 실패시 null */
+    public User selectUserDataByNickname(String nickname){
 
-        return Pair.of(userRepository.accountByNickname(nickname), userRepository.priKeyByNickname(nickname));
+        User user_data = userRepository.userFindByNickname(nickname);
+        return user_data;
     }
+
 }

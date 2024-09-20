@@ -7,27 +7,25 @@ import com.oops.OvertureOfPromachina.testSetting.SpringTestSetting;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 
-public class UserNicknameTest extends SpringTestSetting {
+public class UserDataSaveTest extends SpringTestSetting{
 
     @Autowired
     UserRepository userRepository;
 
     @Test
-    void duplicate_exist_value_test(){
-        User user = UserFixture.create();
-        String nickname = user.getNickname().getNickname();
-        userRepository.save(user);
+    void userSave(){
+        User user_data = UserFixture.create();
+        Long user_id = userRepository.save(user_data);
 
-        Assertions.assertThat(nickname).isEqualTo(userRepository.nicknameByNickname(nickname));
+        System.out.println("user_save_test: " + user_id);
+        Assertions.assertThat(user_id).isNotNull();
     }
 
     @Test
-    void duplicate_non_exist_value_test(){
-        String nickname = " ";
+    void userFindById(){
 
-        Assertions.assertThat(userRepository.nicknameByNickname(nickname)).isNull();
     }
+
 }
