@@ -23,7 +23,6 @@ public class GameRoomController {
     @Operation(summary = "게임룸 제작", description = "게임룸을 제작합니다")
     @PostMapping("/create")
     public ResponseEntity<Long> createGameRoom(@RequestBody @Valid GameRoomCreateRequest gameRoomCreateRequest){
-        User user = null;
         Long result = gameRoomService.makeRoom(gameRoomCreateRequest.getGameMode());
         return ResponseEntity.ok()
                 .body(result);
