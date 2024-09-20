@@ -3,14 +3,15 @@ package com.oops.OvertureOfPromachina.application.repository.user;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.repository.User.UserRepository;
 import com.oops.OvertureOfPromachina.fixture.UserFixture;
+import com.oops.OvertureOfPromachina.testSetting.SpringTestSetting;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
-@SpringBootTest
-public class UserPriKeyByNicknameTest {
+
+public class UserPriKeyByNicknameTest extends SpringTestSetting {
 
     @Autowired
     UserRepository userRepository;
