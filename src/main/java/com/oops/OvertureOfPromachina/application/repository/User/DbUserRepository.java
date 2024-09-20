@@ -8,10 +8,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Repository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import static com.oops.OvertureOfPromachina.application.entity.user.QUser.user;
 
 @Repository
+@Transactional
 public class DbUserRepository implements UserRepository {
 
     private final EntityManager em;
@@ -28,7 +30,6 @@ public class DbUserRepository implements UserRepository {
     public String save(User user_save) {
 
         em.persist(user_save);
-
         return  query.select(user.loginId.loginId)
                 .from(user)
                 .where(user.loginId.loginId.eq(user_save.getLoginId().getLoginId()))
@@ -36,35 +37,31 @@ public class DbUserRepository implements UserRepository {
     }
 
 
-    /** 회원가입 LoginId 중복체크 */
+    /** LoginId 중복체크 */
     @Override
-    public Boolean DuplicateCheckUser(String login_id) {
+    public String loginIdByLoginId(String login_id) {
 
-        String userLoginId = query.select(user.loginId.loginId)
+        return query.select(user.loginId.loginId)
                 .from(user)
                 .where(user.loginId.loginId.eq(login_id))
                 .fetchOne();
-
-        return null == userLoginId;
     }
 
 
-    /** 회원가입 Nickname 중복체크 */
+    /** Nickname 중복체크 */
     @Override
-    public Boolean DuplicateCheckNickname(String nickname) {
+    public String nicknameByNickname(String nickname) {
 
-        String userLoginId = query.select(user.nickname.nickname)
+        return query.select(user.nickname.nickname)
                 .from(user)
                 .where(user.nickname.nickname.eq(nickname))
                 .fetchOne();
-
-        return null == userLoginId;
     }
 
 
-    /** 로그인 시 User의 Nickname 반환 후 해당 데이터 사용 */
+    /** login_id 기반 nickname 반환 */
     @Override
-    public String FindNicknameByLoginId(String login_id) {
+    public String nicknameByLoginId(String login_id) {
 
         return query.select(user.nickname.nickname)
                 .from(user)
@@ -73,20 +70,24 @@ public class DbUserRepository implements UserRepository {
     }
 
 
-    /** 플레이중 Nickname 기반 코인 교환시 필요한 지갑주소와 개인키 반환 */
+    /** Nickname 기반 지갑주소 반환 */
     @Override
-    public Pair<String, String> FindAccountAndPriKeyByNickname(String nickname) {
+    public String accountByNickname(String nickname) {
 
-        String account = query.select(user.account.account)
+        return query.select(user.account.account)
                 .from(user)
                 .where(user.nickname.nickname.eq(nickname))
                 .fetchOne();
-
-        String priKey = query.select(user.priKey.privateKey)
-                .from(user)
-                .where(user.nickname.nickname.eq(nickname))
-                .fetchOne();
-
-        return Pair.of(account, priKey);
     }
+
+    /** Nickname 기반 개인키 반환 */
+    @Override
+    public String priKeyByNickname(String nickname) {
+
+        return query.select(user.priKey.privateKey)
+                .from(user)
+                .where(user.nickname.nickname.eq(nickname))
+                .fetchOne();
+    }
+
 }
