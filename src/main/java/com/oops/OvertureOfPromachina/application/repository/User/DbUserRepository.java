@@ -28,17 +28,28 @@ public class DbUserRepository implements UserRepository {
         return user_save.getId();
     }
 
-    @Override
-    public User user_data_by_login_id(String login_id) {
 
+    @Override
+    public User userFind(String login_id, String password) {
+
+        return query.select(user)
+                .from(user)
+                .where(user.loginId.loginId.eq(login_id), user.pwd.password.eq(password))
+                .fetchFirst();
+    }
+
+
+    @Override
+    public User userFindByLogin(String login_id) {
         return query.select(user)
                 .from(user)
                 .where(user.loginId.loginId.eq(login_id))
                 .fetchFirst();
     }
 
+
     @Override
-    public User user_data_by_nickname(String nickname) {
+    public User userFindByNickname(String nickname) {
 
         return query.select(user)
                 .from(user)
