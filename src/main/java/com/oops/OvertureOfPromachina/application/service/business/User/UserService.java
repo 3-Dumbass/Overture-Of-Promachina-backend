@@ -19,7 +19,7 @@ public class UserService {
      * 실패시 false 반환 */
     public Boolean save(String login_id, String Password, String Nickname, String Account, String PriKey){
 
-        String insert_check = userRepository.save(new User(login_id, Password, Nickname, Account, PriKey));
+        Long insert_check = userRepository.save(new User(login_id, Password, Nickname, Account, PriKey));
         return insert_check != null;
     }
 
@@ -29,7 +29,9 @@ public class UserService {
      * 실패시 false 반환 */
     public Boolean duplicateLoginId(String login_id){
 
-        return null == userRepository.loginIdByLoginId(login_id);
+        User login_check = userRepository.user_data_by_login_id(login_id);
+
+        return null == login_check;
     }
 
 
@@ -38,24 +40,20 @@ public class UserService {
      * 실패시 false 반환 */
     public Boolean duplicateNickname(String nickname){
 
-        return null == userRepository.nicknameByNickname(nickname);
+        User nickname_check = userRepository.user_data_by_nickname(nickname);
+
+        return null == nickname_check;
     }
 
 
-    /** login_id 기반 nickname 반환
-     * 성공시 nickname
+    /** login_id 기반 user_data 반환
+     * 성공시 user_data
      * 실패시 null */
-    public String findNicknameByLoginId(String login_id){
+    public User select_user_data(String login_id){
 
-        return userRepository.nicknameByLoginId(login_id);
+        User user_data = userRepository.user_data_by_login_id(login_id);
+
+        return user_data;
     }
 
-
-    /** nickname 기반 account,priKey 반환
-     *  성공시 Pair<account, priKey>
-     *  실패시 flase */
-    public Pair<String, String> findAccountAndPriKeyByNickname(String nickname){
-
-        return Pair.of(userRepository.accountByNickname(nickname), userRepository.priKeyByNickname(nickname));
-    }
 }
