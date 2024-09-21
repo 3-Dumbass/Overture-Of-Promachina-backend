@@ -1,6 +1,8 @@
 package com.oops.OvertureOfPromachina.application.controller.user;
 
 import com.oops.OvertureOfPromachina.application.entity.user.User;
+import com.oops.OvertureOfPromachina.application.entity.user.valueObject.UserAccount;
+import com.oops.OvertureOfPromachina.application.entity.user.valueObject.UserPrivateKey;
 import com.oops.OvertureOfPromachina.application.service.business.User.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -44,8 +46,8 @@ public class SignUpController {
     @PostMapping("/save")
     public ResponseEntity<Boolean> signup_check(@RequestBody @Valid User user_data) {
 
-        user_data.setAccount(null);
-        user_data.setPriKey(null);
+        user_data.setAccount(new UserAccount("empty"));
+        user_data.setPriKey(new UserPrivateKey("empty"));
 
         Boolean result = userService.save(user_data);
         return ResponseEntity.ok()
