@@ -1,4 +1,4 @@
-package com.oops.OvertureOfPromachina.application.entity;
+package com.oops.OvertureOfPromachina.application.entity.account;
 
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import jakarta.persistence.*;
@@ -14,16 +14,17 @@ import lombok.Setter;
 public class Account {
 
     @Id
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account",nullable = true)
+    @GeneratedValue
+    private long account_id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account")
     private User account;
 
-    @Column(name = "coin1")
-    private long coin1_count;
+    @Column(name = "coin_name")
+    private String coin_name;
 
-    @Column(name = "coin2")
-    private long coin2_count;
+    @Column(name = "coin_count")
+    private long coin_count;
 
-    @Column(name = "coin3")
-    private long coin3_count;
 }
