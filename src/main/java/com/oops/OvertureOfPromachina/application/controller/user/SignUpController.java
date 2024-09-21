@@ -22,12 +22,22 @@ public class SignUpController {
     private final UserService userService;
 
     @Operation(summary = "id 중복체크", description = "사용 가능한 id 인지 확인")
-    @PostMapping("id_check")
+    @PostMapping("/id")
     public ResponseEntity<Boolean> id_check(@RequestBody @Valid User user_data) {
         Boolean result = userService.duplicateLoginId(user_data.getLoginId().getLoginId());
         return ResponseEntity.ok()
                 .body(result);
     }
+
+
+    @Operation(summary = "ninkname 중복체크", description = "사용 가능한 nickname인지 확인")
+    @PostMapping("/nickname")
+    public ResponseEntity<Boolean> nickname_check(@RequestBody @Valid User user_data) {
+        Boolean result = userService.duplicateNickname(user_data.getNickname().getNickname());
+        return ResponseEntity.ok()
+                .body(result);
+    }
+
 
 
 
