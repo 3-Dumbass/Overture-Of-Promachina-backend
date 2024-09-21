@@ -3,6 +3,7 @@ package com.oops.OvertureOfPromachina.application.controller.user;
 import com.oops.OvertureOfPromachina.application.controller.user.dto.UserDto;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.service.business.User.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ public class UserController {
     private final UserService userService;
 
     /** dto는 account 만드는동안 업데이트 예정 */
+    @Operation(summary = "user-account", description = "id 값을 통해 userDto 반환")
     @PostMapping("/account")
     public ResponseEntity<UserDto> user_account(@RequestBody @Valid UserDto userDto) {
 
