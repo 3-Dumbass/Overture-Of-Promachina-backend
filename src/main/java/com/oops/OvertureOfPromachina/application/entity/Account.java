@@ -14,6 +14,9 @@ import lombok.Setter;
 public class Account {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long account_id;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account",nullable = true)
     private User account;
