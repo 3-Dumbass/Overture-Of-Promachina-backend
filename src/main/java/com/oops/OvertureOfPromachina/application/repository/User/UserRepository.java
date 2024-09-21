@@ -10,6 +10,7 @@ public interface UserRepository {
      * LoginId를 통해 insert 성공여부 확인 */
     Long save(User user_save);
 
+
     /** @param login_id,password
      * @return User */
     User userFind(String login_id, String password);
@@ -20,10 +21,10 @@ public interface UserRepository {
     User userFindByLogin(String login_id);
 
 
-
     /** @param nickname
      * @User User */
     User userFindByNickname(String nickname);
 
 
+    User userFindById(long id);
 }

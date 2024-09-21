@@ -1,5 +1,6 @@
 package com.oops.OvertureOfPromachina.application.service.business.User;
 
+import com.oops.OvertureOfPromachina.application.controller.user.dto.LoginDto;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.repository.User.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -47,9 +48,9 @@ public class UserService {
     /** login_id, password 기반 user_data 반환
      * 성공시 user_data
      * 실패시 null */
-    public User selectUserData(String login_id, String password){
+    public User loginUserData(LoginDto loginDto){
 
-        User user_data = userRepository.userFind(login_id, password);
+        User user_data = userRepository.userFind(loginDto.getLogin_id(), loginDto.getPassword());
         return user_data;
     }
 
@@ -57,9 +58,9 @@ public class UserService {
     /** nickname 기반 user_data 반환
      * 성공시 user_data
      * 실패시 null */
-    public User selectUserDataByNickname(String nickname){
+    public User selectUserData(long id){
 
-        User user_data = userRepository.userFindByNickname(nickname);
+        User user_data = userRepository.userFindById(id);
         return user_data;
     }
 
