@@ -48,7 +48,7 @@ public class UserService {
     /** login_id, password 기반 user_data 반환
      * 성공시 user_data
      * 실패시 null */
-    public User selectUserData(LoginDto loginDto){
+    public User loginUserData(LoginDto loginDto){
 
         User user_data = userRepository.userFind(loginDto.getLogin_id(), loginDto.getPassword());
         return user_data;
@@ -58,9 +58,9 @@ public class UserService {
     /** nickname 기반 user_data 반환
      * 성공시 user_data
      * 실패시 null */
-    public User selectUserDataByNickname(String nickname){
+    public User selectUserData(long id){
 
-        User user_data = userRepository.userFindByNickname(nickname);
+        User user_data = userRepository.userFindById(id);
         return user_data;
     }
 

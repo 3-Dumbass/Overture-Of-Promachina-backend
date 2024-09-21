@@ -17,22 +17,22 @@ public class UserSelectTest extends SpringTestSetting {
 
 
     @Test
-    void SelectUserDataTest(){
+    void LoginUserDataTest(){
         User user_save = UserFixture.create();
         LoginDto loginDto = LoginFixture.create();
         userService.save(user_save);
 
-        Assertions.assertThat(userService.selectUserData(loginDto)).isNotNull();
+        Assertions.assertThat(userService.loginUserData(loginDto)).isNotNull();
     }
 
 
     @Test
-    void SelectUserDataByNicknameTest(){
+    void SelectUserDataTest(){
         User user_save = UserFixture.create();
 
         userService.save(user_save);
 
-        Assertions.assertThat(userService.selectUserDataByNickname(user_save.getNickname().getNickname())).isNotNull();
+        Assertions.assertThat(userService.selectUserData(user_save.getId())).isNotNull();
     }
 
 }
