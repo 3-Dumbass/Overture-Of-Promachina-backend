@@ -26,7 +26,6 @@ public class LoginController {
         User user_data = userService.selectUserData(user.getLoginId().getLoginId(), user.getPwd().getPassword());
         return ResponseEntity.ok()
                 .body(user_data);
-
     }
 
     @Operation(summary = "find user by nickname", description = "nickname으로 유저 데이터 반환")
