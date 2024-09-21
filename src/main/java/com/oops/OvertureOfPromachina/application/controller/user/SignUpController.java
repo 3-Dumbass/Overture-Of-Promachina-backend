@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "sign up api", description = "회원가입 api")
 @RestController
-@RequestMapping("/signup")
+@RequestMapping("/sign_up")
 @RequiredArgsConstructor
 public class SignUpController {
 
@@ -38,7 +38,16 @@ public class SignUpController {
                 .body(result);
     }
 
+    @Operation(summary = "user sign up", description = "유저 회원가입 api")
+    @PostMapping("/save")
+    public ResponseEntity<Boolean> signup_check(@RequestBody @Valid User user_data) {
 
+        user_data.setAccount(null);
+        user_data.setPriKey(null);
 
+        Boolean result = userService.save(user_data);
+        return ResponseEntity.ok()
+                .body(result);
+    }
 
 }
