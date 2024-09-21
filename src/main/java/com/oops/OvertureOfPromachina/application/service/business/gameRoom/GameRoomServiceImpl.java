@@ -4,6 +4,7 @@ import com.oops.OvertureOfPromachina.application.entity.GameRoom.GameRoom;
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameModeEnum;
 import com.oops.OvertureOfPromachina.application.entity.gameRoomParticipant.GameRoomParticipant;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
+import com.oops.OvertureOfPromachina.application.repository.User.UserRepository;
 import com.oops.OvertureOfPromachina.application.repository.gameRoom.GameRoomRepository;
 import com.oops.OvertureOfPromachina.application.repository.gameRoomParticipant.GameRoomParticipantRepository;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.GameRoomRealTimeResponse;
@@ -20,6 +21,7 @@ class GameRoomServiceImpl implements GameRoomService{
     private final GameRoomDomainLogic gameRoomDomainLogic;
     private final GameRoomRepository gameRoomRepository;
     private final GameRoomParticipantRepository gameRoomParticipantRepository;
+    private final UserRepository userRepository;
 
     @Override
     public Long makeRoom(GameModeEnum gameMode) {
@@ -34,7 +36,10 @@ class GameRoomServiceImpl implements GameRoomService{
     }
 
     @Override
-    public GameRoomRealTimeResponse<GameRoomJoinData> joinToGameRoom(GameRoom gameRoom, User user) {
+    public GameRoomRealTimeResponse<GameRoomJoinData> joinToGameRoom(Long gameRoomId,Long userId) {
+        User user = null;
+        GameRoom gameRoom = gameRoomRepository.findById(gameRoomId);
+
         GameRoomParticipant gameRoomParticipant = new GameRoomParticipant(gameRoom, user);
         gameRoomParticipantRepository.save(gameRoomParticipant);
         return new GameRoomRealTimeResponse<>(

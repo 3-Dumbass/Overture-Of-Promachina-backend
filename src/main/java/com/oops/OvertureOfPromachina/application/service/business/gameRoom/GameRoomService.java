@@ -18,11 +18,11 @@ public interface GameRoomService {
 
     /**
      * 유저가 게임룸에 입장
-     * @param gameRoom 입장할 게임룸
-     * @param user 입장할 유저
+     * @param gameRoomId 입장할 게임룸 id
+     * @param userId 입장할 유저 id
      * @return 입장된 게임룸의 id
      */
-    GameRoomRealTimeResponse<GameRoomJoinData> joinToGameRoom(GameRoom gameRoom, User user);
+    GameRoomRealTimeResponse<GameRoomJoinData> joinToGameRoom(Long gameRoomId, Long userId);
 
     /**
      * 유저가 참가중인 게임방을 나감
