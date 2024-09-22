@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/game-room")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin(originPatterns = "*")//TODO: 변경 필요
 public class GameRoomController {
     private final GameRoomService gameRoomService;
 
