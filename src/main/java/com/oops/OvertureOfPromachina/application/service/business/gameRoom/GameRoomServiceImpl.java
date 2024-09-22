@@ -13,9 +13,11 @@ import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.ty
 import com.oops.OvertureOfPromachina.application.service.domain.gameRoom.GameRoomDomainLogic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 class GameRoomServiceImpl implements GameRoomService{
 
     private final GameRoomDomainLogic gameRoomDomainLogic;
