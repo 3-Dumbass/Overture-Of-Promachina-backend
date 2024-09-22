@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/game-room")
 @RequiredArgsConstructor
+@Slf4j
 public class GameRoomController {
     private final GameRoomService gameRoomService;
 
@@ -23,6 +25,7 @@ public class GameRoomController {
     @Operation(summary = "게임룸 제작", description = "게임룸을 제작합니다")
     @PostMapping("/create")
     public ResponseEntity<Long> createGameRoom(@RequestBody @Valid GameRoomCreateRequest gameRoomCreateRequest){
+        log.info(gameRoomCreateRequest.getGameMode());
         Long result = gameRoomService.makeRoom(gameRoomCreateRequest.getGameMode());
         return ResponseEntity.ok()
                 .body(result);

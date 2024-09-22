@@ -24,8 +24,9 @@ class GameRoomServiceImpl implements GameRoomService{
     private final UserRepository userRepository;
 
     @Override
-    public Long makeRoom(GameModeEnum gameMode) {
-        GameRoom gameRoom = gameRoomDomainLogic.makeGameRoom(gameMode);
+    public Long makeRoom(String  gameMode) {
+        GameModeEnum gameModeEnum = GameModeEnum.valueOf(gameMode);
+        GameRoom gameRoom = gameRoomDomainLogic.makeGameRoom(gameModeEnum);
         gameRoomRepository.save(gameRoom);
         return gameRoom.getId();
     }

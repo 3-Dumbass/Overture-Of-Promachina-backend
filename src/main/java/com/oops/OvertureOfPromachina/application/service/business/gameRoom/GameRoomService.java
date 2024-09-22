@@ -12,7 +12,7 @@ public interface GameRoomService {
      * 유저가 게임룸을 제작해서 입장
      * @return 제작된 게임룸 id
      */
-    Long makeRoom(GameModeEnum gameMode);
+    Long makeRoom(String gameMode);
 
     GameRoom findGameRoomById(Long id);
 
