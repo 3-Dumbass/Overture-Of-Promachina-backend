@@ -46,7 +46,6 @@ public class SignUpController {
     @PostMapping("/save")
     public ResponseEntity<Boolean> signup_check(@RequestBody @Valid User user_data) {
 
-        user_data.setAccount(new UserAccount("empty"));
         user_data.setPriKey(new UserPrivateKey("empty"));
 
         Boolean result = userService.save(user_data);

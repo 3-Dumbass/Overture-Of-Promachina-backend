@@ -18,13 +18,15 @@ public class Account {
     private long account_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account")
-    private User account;
+    @JoinColumn(name = "loginId")
+    private User loginId;
 
-    @Column(name = "coin_name")
-    private String coin_name;
+    @Column(name = "account")
+    private String account;
 
-    @Column(name = "coin_count")
-    private long coin_count;
 
+    public Account(User loginId, String account) {
+        this.loginId = loginId;
+        this.account = account;
+    }
 }

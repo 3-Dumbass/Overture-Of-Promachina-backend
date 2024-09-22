@@ -1,6 +1,7 @@
 package com.oops.OvertureOfPromachina.application.controller.user;
 
 import com.oops.OvertureOfPromachina.application.controller.user.dto.UserDto;
+import com.oops.OvertureOfPromachina.application.entity.account.Account;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.service.business.User.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -27,6 +28,7 @@ public class UserController {
     public ResponseEntity<UserDto> user_account(@RequestBody @Valid UserDto userDto) {
 
         User user_data = userService.selectUserData(userDto.getId());
+        Account account = new Account(user_data, "test_account");
 
         if (user_data == null) {
             return ResponseEntity.ok()
@@ -34,7 +36,7 @@ public class UserController {
         }
         else {
             return ResponseEntity.ok()
-                    .body(new UserDto(user_data.getId(), user_data.getAccount().getAccount(), user_data.getPriKey().getPrivateKey()));
+                    .body(new UserDto(user_data.getId(), account.getAccount(), user_data.getPriKey().getPrivateKey()));
         }
     }
 }
