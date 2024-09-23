@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface AccountRepository {
 
-    long save(Account account);
+    Long save(Account account);
     List<Account> findAccount(long user_id);
 }

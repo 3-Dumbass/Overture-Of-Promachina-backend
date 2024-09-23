@@ -24,7 +24,7 @@ public class DbAccountRepository implements AccountRepository {
 
 
     @Override
-    public long save(Account account_save) {
+    public Long save(Account account_save) {
 
         em.persist(account_save);
         return account_save.getAccount_id();
