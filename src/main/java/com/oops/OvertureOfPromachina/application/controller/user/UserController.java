@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Tag(name = "User api", description = "유저 정보 api")
 @RestController
 @RequestMapping("/user")
@@ -28,15 +30,15 @@ public class UserController {
     public ResponseEntity<UserDto> user_account(@RequestBody @Valid UserDto userDto) {
 
         User user_data = userService.selectUserData(userDto.getId());
-        Account account = new Account(user_data, "test_account", "test_priKey");
 
         if (user_data == null) {
             return ResponseEntity.ok()
                     .body(null);
         }
         else {
+            List<Account> account = null;
             return ResponseEntity.ok()
-                    .body(new UserDto(user_data.getId(), account.getAccount(), account.getPriKey()));
+                    .body(new UserDto(userDto.getId(), account));
         }
     }
 }

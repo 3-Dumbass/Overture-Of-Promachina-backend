@@ -18,19 +18,19 @@ public class Account {
     private long account_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "loginId")
-    private User loginId;
+    @JoinColumn(name = "user_id")
+    private User user_id;
 
-    @Column(name = "account")
-    private String account;
+    @Column(name = "accountKey")
+    private String accountKey;
 
     @Column(name = "priKey")
     private String priKey;
 
 
-    public Account(User loginId, String account, String priKey) {
-        this.loginId = loginId;
-        this.account = account;
+    public Account(User user_id, String accountKey, String priKey) {
+        this.user_id = user_id;
+        this.accountKey = accountKey;
         this.priKey = priKey;
     }
 }
