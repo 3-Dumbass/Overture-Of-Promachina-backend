@@ -3,6 +3,7 @@ package com.oops.OvertureOfPromachina.application.controller.user;
 import com.oops.OvertureOfPromachina.application.controller.user.dto.UserDto;
 import com.oops.OvertureOfPromachina.application.entity.account.Account;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
+import com.oops.OvertureOfPromachina.application.service.business.Account.AccountService;
 import com.oops.OvertureOfPromachina.application.service.business.User.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -23,22 +24,16 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final AccountService accountService;
 
     /** dto는 account 만드는동안 업데이트 예정 */
     @Operation(summary = "user-account", description = "id 값을 통해 userDto 반환")
     @PostMapping("/account")
     public ResponseEntity<UserDto> user_account(@RequestBody @Valid UserDto userDto) {
 
-        User user_data = userService.selectUserData(userDto.getId());
+        List<Account> account = accountService.getAccounts(userDto);
+        return ResponseEntity.ok()
+                .body(new UserDto(userDto.getId(), account));
 
-        if (user_data == null) {
-            return ResponseEntity.ok()
-                    .body(null);
-        }
-        else {
-            List<Account> account = null;
-            return ResponseEntity.ok()
-                    .body(new UserDto(userDto.getId(), account));
-        }
     }
 }
