@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class SignUpController {
 
-
     private final UserService userService;
+
 
     @Operation(summary = "id 중복체크", description = "사용 가능한 id 인지 확인")
     @PostMapping("/id")
@@ -42,11 +42,10 @@ public class SignUpController {
                 .body(result);
     }
 
+
     @Operation(summary = "user sign up", description = "유저 회원가입 api")
     @PostMapping("/save")
     public ResponseEntity<Boolean> signup_check(@RequestBody @Valid User user_data) {
-
-        user_data.setPriKey(new UserPrivateKey("empty"));
 
         Boolean result = userService.save(user_data);
         return ResponseEntity.ok()
