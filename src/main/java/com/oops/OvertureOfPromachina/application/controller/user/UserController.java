@@ -28,7 +28,7 @@ public class UserController {
     public ResponseEntity<UserDto> user_account(@RequestBody @Valid UserDto userDto) {
 
         User user_data = userService.selectUserData(userDto.getId());
-        Account account = new Account(user_data, "test_account");
+        Account account = new Account(user_data, "test_account", "test_priKey");
 
         if (user_data == null) {
             return ResponseEntity.ok()
@@ -36,7 +36,7 @@ public class UserController {
         }
         else {
             return ResponseEntity.ok()
-                    .body(new UserDto(user_data.getId(), account.getAccount(), user_data.getPriKey().getPrivateKey()));
+                    .body(new UserDto(user_data.getId(), account.getAccount(), account.getPriKey()));
         }
     }
 }

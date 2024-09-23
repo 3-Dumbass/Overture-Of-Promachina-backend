@@ -25,7 +25,11 @@ public class UserDataSaveTest extends SpringTestSetting{
 
     @Test
     void userFindById(){
+        User user_data = UserFixture.create();
+        Long user_id = userRepository.save(user_data);
 
+        User user_test = userRepository.userFindById(user_id);
+        Assertions.assertThat(user_test).isNotNull();
     }
 
 }

@@ -27,14 +27,10 @@ public class User {
     @Embedded
     private UserPassword pwd;
 
-    @Embedded
-    private UserPrivateKey priKey;
 
-    public User(String  nickname, String  loginId, String  pwd,
-                String  priKey) {
+    public User(String  nickname, String  loginId, String  pwd) {
         this.nickname = new UserNickname(nickname);
         this.loginId = new UserLoginId(loginId);
         this.pwd = new UserPassword(pwd);
-        this.priKey = new UserPrivateKey(priKey);
     }
 }

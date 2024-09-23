@@ -24,9 +24,13 @@ public class Account {
     @Column(name = "account")
     private String account;
 
+    @Column(name = "priKey")
+    private String priKey;
 
-    public Account(User loginId, String account) {
+
+    public Account(User loginId, String account, String priKey) {
         this.loginId = loginId;
         this.account = account;
+        this.priKey = priKey;
     }
 }
