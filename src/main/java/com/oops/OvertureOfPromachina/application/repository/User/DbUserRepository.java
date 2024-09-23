@@ -31,6 +31,7 @@ public class DbUserRepository implements UserRepository {
 
     @Override
     public User userFindByLogin(String login_id) {
+
         return query.select(user)
                 .from(user)
                 .where(user.loginId.loginId.eq(login_id))
@@ -40,6 +41,7 @@ public class DbUserRepository implements UserRepository {
 
     @Override
     public User userFindByNickname(String nickname) {
+
         return query.select(user)
                 .from(user)
                 .where(user.nickname.nickname.eq(nickname))

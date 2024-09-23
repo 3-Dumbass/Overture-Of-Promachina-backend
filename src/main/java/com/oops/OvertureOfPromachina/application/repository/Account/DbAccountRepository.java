@@ -18,6 +18,7 @@ public class DbAccountRepository implements AccountRepository {
 
 
     public DbAccountRepository(EntityManager em) {
+
         this.em = em;
         this.query = new JPAQueryFactory(em);
     }
@@ -33,6 +34,7 @@ public class DbAccountRepository implements AccountRepository {
 
     @Override
     public List<Account> findAccount(long user_id) {
+
         return query.select(account)
                 .from(account)
                 .where(account.user_id.id.eq(user_id))

@@ -10,10 +10,4 @@ public class LoginDto {
 
     private String login_id;
     private String password;
-
-
-    public LoginDto(String login_id, String password) {
-        this.login_id = login_id;
-        this.password = password;
-    }
 }
