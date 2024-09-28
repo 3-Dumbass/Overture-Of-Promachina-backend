@@ -1,4 +1,4 @@
-package com.oops.OvertureOfPromachina.application.controller.gameRoom.dto;
+package com.oops.OvertureOfPromachina.application.controller.gameRoomRealTime.dto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

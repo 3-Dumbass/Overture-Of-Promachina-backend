@@ -7,11 +7,13 @@ import com.oops.OvertureOfPromachina.application.repository.gameRoomList.GameRoo
 import com.oops.OvertureOfPromachina.application.service.domain.pagination.PaginationDomainLogic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 class GameRoomListServiceImpl implements GameRoomListService{
 
     private final GameRoomListRepository gameRoomListRepository;

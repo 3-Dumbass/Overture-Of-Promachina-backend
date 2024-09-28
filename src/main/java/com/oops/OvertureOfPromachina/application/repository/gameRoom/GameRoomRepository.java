@@ -24,11 +24,4 @@ public interface GameRoomRepository {
      * @return 찾아진 게임룸
      */
     GameRoom findById(Long id);
-
-    /**
-     * 해당 유저가 참가 중인 게임룸 찾기
-     * @param user 확인하고자 하는 유저 객체
-     * @return 참가중인 게임룸이 있을 경우 게임룸, 없을 경우 null
-     */
-    GameRoom findByUser(User user);
 }

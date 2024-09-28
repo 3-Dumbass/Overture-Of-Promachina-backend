@@ -8,15 +8,13 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "game room list api", description = "게임 방 리스트의 API 목록")
 @RestController
 @RequestMapping("/api/v1/game-room-list")
 @RequiredArgsConstructor
+@CrossOrigin(originPatterns = "*")//TODO: 변경 필요
 public class GameRoomListController {
 
     private final GameRoomListService gameRoomListService;
