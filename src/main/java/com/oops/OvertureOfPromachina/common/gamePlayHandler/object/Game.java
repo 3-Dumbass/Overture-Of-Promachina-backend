@@ -19,6 +19,6 @@ public class Game {
         this.roomId = roomId;
         this.playerList = userIdList.stream().map(Player::new).toList();
         this.finishPlayerIds = new ConcurrentSkipListSet<>();
-        this.gameStep = GameStep.BETTING;
+        this.gameStep = GameStep.PLAYING;
     }
 }
