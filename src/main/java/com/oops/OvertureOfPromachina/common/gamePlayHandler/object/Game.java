@@ -11,14 +11,14 @@ import java.util.concurrent.ConcurrentSkipListSet;
 @Getter
 public class Game {
     private final Long roomId;
-    private final List<Long> userIdList;
-    private Set<Long> finishUsers;
+    private final List<Player> playerList;
+    private Set<Long> finishPlayerIds;
     private GameStep gameStep;
 
     public Game(Long roomId, List<Long> userIdList) {
         this.roomId = roomId;
-        this.userIdList = userIdList;
-        this.finishUsers = new ConcurrentSkipListSet<>();
+        this.playerList = userIdList.stream().map(Player::new).toList();
+        this.finishPlayerIds = new ConcurrentSkipListSet<>();
         this.gameStep = GameStep.BETTING;
     }
 }

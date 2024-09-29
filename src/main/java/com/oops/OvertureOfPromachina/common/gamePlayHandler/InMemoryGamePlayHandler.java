@@ -18,14 +18,4 @@ public class InMemoryGamePlayHandler implements GamePlayHandler{
         Game game = new Game(gameStartDto.getRoomId(), gameStartDto.getUserIds());
         gameList.put(game.getRoomId(), game);
     }
-
-    @Override
-    public Boolean betting(BettingDto bettingDto) {
-        return null;
-    }
-
-    @Override
-    public Boolean checkAllPeopleBetting() {
-        return null;
-    }
 }
