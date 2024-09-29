@@ -1,9 +1,6 @@
 package com.oops.OvertureOfPromachina.common.gamePlayHandler;
 
-import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.BettingDto;
 import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.GameStartDto;
-
-import java.util.List;
 
 public interface GamePlayHandler {
 
@@ -12,4 +9,16 @@ public interface GamePlayHandler {
      * @param gameStartDto 시작할 게임에 대한 정보
      */
     void startGame(GameStartDto gameStartDto);
+
+    /**
+     * 다음턴으로 이동
+     * @param roomId 턴을 넘길 방 아이디
+     */
+    void nextTurn(Long roomId);
+
+    /**
+     * 모든 사람이 이번 턴을 마무리 했을 경우 다음으로 이동
+     * @param roomId 턴을 넘길 방 아이디
+     */
+    void nextTurnIfFinishAllPlayer(Long roomId);
 }

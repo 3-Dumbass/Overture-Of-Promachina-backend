@@ -1,6 +1,5 @@
 package com.oops.OvertureOfPromachina.common.gamePlayHandler;
 
-import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.BettingDto;
 import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.GameStartDto;
 import com.oops.OvertureOfPromachina.common.gamePlayHandler.object.Game;
 import org.springframework.stereotype.Component;
@@ -17,5 +16,18 @@ public class InMemoryGamePlayHandler implements GamePlayHandler{
     public void startGame(GameStartDto gameStartDto) {
         Game game = new Game(gameStartDto.getRoomId(), gameStartDto.getUserIds());
         gameList.put(game.getRoomId(), game);
+    }
+
+    @Override
+    public void nextTurn(Long roomId) {
+        gameList.get(roomId).nextTurn();
+    }
+
+    @Override
+    public void nextTurnIfFinishAllPlayer(Long roomId) {
+        Game game = gameList.get(roomId);
+        if(game.checkAllPlayerFinish()){
+            nextTurn(roomId);
+        }
     }
 }

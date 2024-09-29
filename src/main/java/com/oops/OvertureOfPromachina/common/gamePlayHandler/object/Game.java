@@ -21,4 +21,23 @@ public class Game {
         this.finishPlayerIds = new ConcurrentSkipListSet<>();
         this.gameStep = GameStep.PLAYING;
     }
+
+    public void nextTurn(){
+        this.finishPlayerIds = new ConcurrentSkipListSet<>();
+    }
+
+    public void finish(){
+        this.gameStep = GameStep.FINISH;
+    }
+
+    public boolean checkAllPlayerFinish(){
+        boolean finish = true;
+        for(Player player:playerList){
+            if (!finishPlayerIds.contains(player.getId())) {
+                finish = false;
+                break;
+            }
+        }
+        return true;
+    }
 }
