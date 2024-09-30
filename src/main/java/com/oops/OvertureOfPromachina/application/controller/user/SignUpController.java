@@ -1,5 +1,6 @@
 package com.oops.OvertureOfPromachina.application.controller.user;
 
+import com.oops.OvertureOfPromachina.application.controller.user.dto.LoginDto;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.entity.user.valueObject.UserAccount;
 import com.oops.OvertureOfPromachina.application.entity.user.valueObject.UserPrivateKey;
@@ -23,11 +24,11 @@ public class SignUpController {
     private final UserService userService;
 
 
-    @Operation(summary = "id 중복체크", description = "사용 가능한 id 인지 확인")
-    @PostMapping("/id")
-    public ResponseEntity<Boolean> id_check(@RequestBody @Valid User user_data) {
+    @Operation(summary = "login id 중복체크", description = "사용 가능한 id 인지 확인")
+    @PostMapping("/login-id")
+    public ResponseEntity<Boolean> id_check(@RequestBody @Valid LoginDto loginDto) {
 
-        Boolean result = userService.duplicateLoginId(user_data.getLoginId().getLoginId());
+        Boolean result = userService.duplicateLoginId(loginDto.getLogin_id());
         return ResponseEntity.ok()
                 .body(result);
     }
@@ -35,9 +36,9 @@ public class SignUpController {
 
     @Operation(summary = "ninkname 중복체크", description = "사용 가능한 nickname인지 확인")
     @PostMapping("/nickname")
-    public ResponseEntity<Boolean> nickname_check(@RequestBody @Valid User user_data) {
+    public ResponseEntity<Boolean> nickname_check(@RequestBody @Valid LoginDto loginDto) {
 
-        Boolean result = userService.duplicateNickname(user_data.getNickname().getNickname());
+        Boolean result = userService.duplicateNickname(loginDto.getNickname());
         return ResponseEntity.ok()
                 .body(result);
     }
@@ -45,9 +46,9 @@ public class SignUpController {
 
     @Operation(summary = "user sign up", description = "유저 회원가입 api")
     @PostMapping("/save")
-    public ResponseEntity<Boolean> signup_check(@RequestBody @Valid User user_data) {
+    public ResponseEntity<Boolean> signup_check(@RequestBody @Valid LoginDto loginDto) {
 
-        Boolean result = userService.save(user_data);
+        Boolean result = userService.save(new User(loginDto.getLogin_id(), loginDto.getNickname(), loginDto.getPassword()));
         return ResponseEntity.ok()
                 .body(result);
     }
