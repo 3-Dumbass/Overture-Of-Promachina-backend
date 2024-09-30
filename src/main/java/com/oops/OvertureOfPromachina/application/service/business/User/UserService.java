@@ -18,10 +18,9 @@ public class UserService {
     /** user 데이터 저장
      * 성공시 true
      * 실패시 false 반환 */
-    public Boolean save(User user_data){
+    public Long save(User user_data){
 
-        Long insert_check = userRepository.save(user_data);
-        return insert_check != null;
+        return userRepository.save(user_data);
     }
 
 

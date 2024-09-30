@@ -1,9 +1,11 @@
 package com.oops.OvertureOfPromachina.application.controller.user;
 
 import com.oops.OvertureOfPromachina.application.controller.user.dto.LoginDto;
+import com.oops.OvertureOfPromachina.application.entity.casinoChip.CasinoChip;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.entity.user.valueObject.UserAccount;
 import com.oops.OvertureOfPromachina.application.entity.user.valueObject.UserPrivateKey;
+import com.oops.OvertureOfPromachina.application.service.business.CasinoChip.CasinoChipService;
 import com.oops.OvertureOfPromachina.application.service.business.User.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SignUpController {
 
     private final UserService userService;
-
+    private final CasinoChipService casinoChipService;
 
     @Operation(summary = "login id 중복체크", description = "사용 가능한 id 인지 확인")
     @PostMapping("/login-id")
@@ -48,9 +50,16 @@ public class SignUpController {
     @PostMapping("/save")
     public ResponseEntity<Boolean> signup_check(@RequestBody @Valid LoginDto loginDto) {
 
-        Boolean result = userService.save(new User(loginDto.getLogin_id(), loginDto.getNickname(), loginDto.getPassword()));
+        Long user_id = userService.save(new User(loginDto.getLogin_id(), loginDto.getNickname(), loginDto.getPassword()));
+
+        if(user_id != null) {
+            User user_data = userService.selectUserData(user_id);
+            CasinoChip casinoChip_data = casinoChipService.save(user_data);
+            return ResponseEntity.ok()
+                    .body(casinoChip_data != null);
+        }
         return ResponseEntity.ok()
-                .body(result);
+                .body(false);
     }
 
 }

@@ -17,7 +17,7 @@ public class UserSaveTest extends SpringTestSetting {
     @Test
     void SaveUser(){
         User user_save = UserFixture.create();
-        Assertions.assertThat(userService.save(user_save)).isEqualTo(true);
+        Assertions.assertThat(userService.save(user_save)).isNotNull();
 
     }
 
