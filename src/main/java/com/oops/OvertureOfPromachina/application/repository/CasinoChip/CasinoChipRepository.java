@@ -5,9 +5,9 @@ import com.oops.OvertureOfPromachina.application.entity.user.User;
 
 public interface CasinoChipRepository {
 
-    void save(CasinoChip casinoChip_data);
+    CasinoChip save(CasinoChip casinoChip_data);
 
-    void update(User user_id, long rate);
+    CasinoChip update(User user_id, long rate);
 
     CasinoChip selectById(long id);
 }
