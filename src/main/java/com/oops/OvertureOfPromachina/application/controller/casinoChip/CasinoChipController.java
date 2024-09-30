@@ -22,6 +22,8 @@ public class CasinoChipController {
 
     private final CasinoChipService casinoChipService;
 
+    /**
+     * 보유 머니 변동 및 변동 결과 리턴 */
     @Operation(summary = "chip trade api", description = "칩 보유 머니 업데이트 api")
     @PostMapping("/trade")
     public ResponseEntity<Boolean> chipTrade(@RequestBody @Valid ChipDto chipDto) {

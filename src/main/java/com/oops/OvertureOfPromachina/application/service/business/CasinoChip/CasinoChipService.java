@@ -17,21 +17,24 @@ public class CasinoChipService {
     private final CasinoChipRepository casinoChipRepository;
     private final UserService userService;
 
+    long default_money = 0;
 
+
+    /** user의 기본 칩 생성
+     * @param user_data
+     * @return CasinoChip */
     public CasinoChip save(User user_data) {
 
-        return casinoChipRepository.save(new CasinoChip(user_data, 0));
+        return casinoChipRepository.save(new CasinoChip(user_data, default_money));
     }
 
 
+    /** 보유 머니 변동 Service
+     * @param chipDto
+     * @return CasinoChip */
     public CasinoChip chip_trade(ChipDto chipDto){
 
         User user_data = userService.selectUserData(chipDto.getUser_id());
         return casinoChipRepository.update(user_data, chipDto.getRate());
     }
-
-
-
-
-
 }

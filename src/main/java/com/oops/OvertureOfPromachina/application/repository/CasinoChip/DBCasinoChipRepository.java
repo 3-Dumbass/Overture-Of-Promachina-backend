@@ -16,18 +16,20 @@ public class DBCasinoChipRepository implements CasinoChipRepository{
     private final EntityManager em;
     private final JPAQueryFactory query;
 
+
     public DBCasinoChipRepository(EntityManager em) {
         this.em = em;
         this.query = new JPAQueryFactory(em);
     }
 
+
     @Override
     public CasinoChip save(CasinoChip casinoChip_data) {
 
         em.persist(casinoChip_data);
-
         return selectById(casinoChip_data.getUser_id().getId());
     }
+
 
     @Override
     public CasinoChip update(User user_data, long rate) {
@@ -38,6 +40,7 @@ public class DBCasinoChipRepository implements CasinoChipRepository{
 
         return selectById(user_data.getId());
     }
+
 
     @Override
     public CasinoChip selectById(long id) {
