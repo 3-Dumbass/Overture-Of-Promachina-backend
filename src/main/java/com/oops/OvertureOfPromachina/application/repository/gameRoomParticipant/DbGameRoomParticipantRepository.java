@@ -7,6 +7,8 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 import static com.oops.OvertureOfPromachina.application.entity.gameRoomParticipant.QGameRoomParticipant.gameRoomParticipant;
 
 @Repository
@@ -38,5 +40,13 @@ public class DbGameRoomParticipantRepository implements GameRoomParticipantRepos
                 .from(gameRoomParticipant)
                 .where(gameRoomParticipant.user.eq(user))
                 .fetchOne();
+    }
+
+    @Override
+    public List<User> findAllUserByRoomId(Long roomId) {
+        return query.select(gameRoomParticipant.user)
+                .from(gameRoomParticipant)
+                .where(gameRoomParticipant.gameRoom.id.eq(roomId))
+                .fetch();
     }
 }
