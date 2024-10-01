@@ -21,4 +21,10 @@ public interface GamePlayHandler {
      * @param roomId 턴을 넘길 방 아이디
      */
     void nextTurnIfFinishAllPlayer(Long roomId);
+
+    /**
+     * 이 게임을 종료
+     * @param roomId 종료시킬 게임방을 종료
+     */
+    void finish(Long roomId);
 }

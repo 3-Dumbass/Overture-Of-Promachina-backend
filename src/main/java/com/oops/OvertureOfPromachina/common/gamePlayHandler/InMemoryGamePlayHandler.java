@@ -30,4 +30,10 @@ public class InMemoryGamePlayHandler implements GamePlayHandler{
             nextTurn(roomId);
         }
     }
+
+    @Override
+    public void finish(Long roomId) {
+        Game game = gameList.get(roomId);
+        game.finish();
+    }
 }
