@@ -36,6 +36,6 @@ public class CasinoChipService {
     public CasinoChip chip_trade(ChipDto chipDto){
 
         User user_data = userService.selectUserData(chipDto.getUser_id());
-        return casinoChipRepository.update(user_data, chipDto.getRate());
+        return casinoChipRepository.update(user_data, chipDto.getMoney());
     }
 }

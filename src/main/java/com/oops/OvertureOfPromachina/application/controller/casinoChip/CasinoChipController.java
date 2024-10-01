@@ -23,14 +23,14 @@ public class CasinoChipController {
     private final CasinoChipService casinoChipService;
 
     /**
-     * 보유 머니 변동 및 변동 결과 리턴 */
+     * 보유 머니 변동 결과 리턴 */
     @Operation(summary = "chip trade api", description = "칩 보유 머니 업데이트 api")
-    @PostMapping("/trade")
+    @PostMapping("/update")
     public ResponseEntity<Boolean> chipTrade(@RequestBody @Valid ChipDto chipDto) {
 
         CasinoChip casinoChip_data = casinoChipService.chip_trade(chipDto);
 
         return ResponseEntity.ok()
-                .body(casinoChip_data.getMoney() == chipDto.getMoney());
+                .body(casinoChip_data != null);
     }
 }
