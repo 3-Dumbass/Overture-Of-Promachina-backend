@@ -7,7 +7,7 @@ public class CasinoChipFixture {
 
     static public CasinoChip create(User user){
 
-        long test_money = 10000;
+        Long test_money = 10000L;
 
         return new CasinoChip(user, test_money);
     }

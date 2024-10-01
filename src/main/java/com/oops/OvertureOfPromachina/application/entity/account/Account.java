@@ -17,7 +17,7 @@ public class Account {
 
     @Id
     @GeneratedValue
-    private long account_id;
+    private Long account_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @Cascade(CascadeType.ALL)

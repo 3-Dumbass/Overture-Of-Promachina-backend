@@ -21,7 +21,7 @@ public class CasinoChip {
 
     @Id
     @GeneratedValue
-    private long casino_chip_id;
+    private Long casino_chip_id;
 
     @OneToOne(fetch = FetchType.LAZY)
     @Cascade(CascadeType.ALL)
@@ -29,10 +29,10 @@ public class CasinoChip {
     private User user_id;
 
     @Column(name = "money")
-    private long money;
+    private Long money;
 
 
-    public CasinoChip(User user, long money) {
+    public CasinoChip(User user, Long money) {
         this.user_id = user;
         this.money = money;
     }

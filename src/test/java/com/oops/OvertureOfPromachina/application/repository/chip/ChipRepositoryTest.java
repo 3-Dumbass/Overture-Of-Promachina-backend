@@ -44,7 +44,7 @@ public class ChipRepositoryTest extends SpringTestSetting {
         CasinoChip casinoChip = CasinoChipFixture.create(user);
         casinoChipRepository.save(casinoChip);
 
-        CasinoChip updateChip = casinoChipRepository.update(user, -5000);
+        CasinoChip updateChip = casinoChipRepository.update(user, -5000L);
         Assertions.assertNotNull(updateChip);
     }
 }
