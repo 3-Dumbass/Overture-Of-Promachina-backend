@@ -7,6 +7,7 @@ import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.repository.User.UserRepository;
 import com.oops.OvertureOfPromachina.application.repository.gameRoom.GameRoomRepository;
 import com.oops.OvertureOfPromachina.application.repository.gameRoomParticipant.GameRoomParticipantRepository;
+import com.oops.OvertureOfPromachina.application.responseDto.gameRoom.GameRoomInfoResponse;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.GameRoomRealTimeResponse;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.data.GameRoomJoinData;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.type.MessageType;
@@ -14,6 +15,8 @@ import com.oops.OvertureOfPromachina.application.service.domain.gameRoom.GameRoo
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -56,6 +59,13 @@ class GameRoomServiceImpl implements GameRoomService{
     @Override
     public void leaveGameRoom(User user) {
 
+    }
+
+    @Override
+    public GameRoomInfoResponse getGameRoomInfo(Long roomId) {
+        List<User> users = gameRoomParticipantRepository.findAllUserByRoomId(roomId);
+        GameRoomInfoResponse gameRoomInfoResponse = new GameRoomInfoResponse(users);
+        return gameRoomInfoResponse;
     }
 
 

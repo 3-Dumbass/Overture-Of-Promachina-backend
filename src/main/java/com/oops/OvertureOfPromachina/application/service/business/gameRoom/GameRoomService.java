@@ -3,6 +3,7 @@ package com.oops.OvertureOfPromachina.application.service.business.gameRoom;
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.GameRoom;
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameModeEnum;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
+import com.oops.OvertureOfPromachina.application.responseDto.gameRoom.GameRoomInfoResponse;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.GameRoomRealTimeResponse;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.data.GameRoomJoinData;
 
@@ -29,4 +30,12 @@ public interface GameRoomService {
      * @param user 나가고자 하는 유저
      */
     void leaveGameRoom(User user);
+
+    /**
+     * 해당 게임룸의 정보를 가져옴
+     * @param roomId 게임룸 아이디
+     * @return 해당 게임룸의 정보
+     */
+    GameRoomInfoResponse getGameRoomInfo(Long roomId);
+
 }
