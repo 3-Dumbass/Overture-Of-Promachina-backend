@@ -8,5 +8,5 @@ import java.util.List;
 public interface AccountRepository {
 
     Long save(Account account);
-    List<Account> findAccount(long user_id);
+    List<Account> findAccount(Long user_id);
 }

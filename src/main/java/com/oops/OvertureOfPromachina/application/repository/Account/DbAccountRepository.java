@@ -33,7 +33,7 @@ public class DbAccountRepository implements AccountRepository {
 
 
     @Override
-    public List<Account> findAccount(long user_id) {
+    public List<Account> findAccount(Long user_id) {
 
         return query.select(account)
                 .from(account)

@@ -5,9 +5,9 @@ import com.oops.OvertureOfPromachina.application.entity.user.User;
 public interface UserRepository {
 
     /** 회원 가입
+     * LoginId를 통해 insert 성공여부 확인
      * @param user_save
-     * @return LoginId
-     * LoginId를 통해 insert 성공여부 확인 */
+     * @return LoginId */
     Long save(User user_save);
 
 
@@ -26,5 +26,5 @@ public interface UserRepository {
     User userFindByNickname(String nickname);
 
 
-    User userFindById(long id);
+    User userFindById(Long id);
 }

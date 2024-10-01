@@ -24,8 +24,9 @@ public class CasinoChipService {
      * @param user_data
      * @return CasinoChip */
     public CasinoChip save(User user_data) {
+        Long casino_id = casinoChipRepository.save(new CasinoChip(user_data, default_money));
 
-        return casinoChipRepository.save(new CasinoChip(user_data, default_money));
+        return casinoChipRepository.selectById(casino_id);
     }
 
 
