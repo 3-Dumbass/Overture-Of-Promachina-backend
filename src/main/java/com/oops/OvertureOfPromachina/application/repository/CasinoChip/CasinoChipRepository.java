@@ -14,7 +14,7 @@ public interface CasinoChipRepository {
     /** user의 보유 머니 변동 Repository
      * @params user_id, rate
      * @return CasinoChip */
-    CasinoChip update(User user_id, long rate);
+    CasinoChip update(User user_id, Long rate);
 
 
     /** user_id 기준 CasinoChip객체 반환

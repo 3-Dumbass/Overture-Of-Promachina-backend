@@ -60,7 +60,7 @@ public class DbUserRepository implements UserRepository {
 
 
     @Override
-    public User userFindById(long id) {
+    public User userFindById(Long id) {
 
         return query.select(user)
                 .from(user)
