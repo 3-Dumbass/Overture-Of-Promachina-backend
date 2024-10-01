@@ -36,12 +36,16 @@ public class DBCasinoChipRepository implements CasinoChipRepository{
 
 
     @Override
-    public CasinoChip update(User user_data, Long rate) {
+    public CasinoChip update(User user_data, Long money) {
 
         CasinoChip casinoChip = selectById(user_data.getId());
-        casinoChip.setMoney(casinoChip.getMoney() + rate);
-
-        return selectById(user_data.getId());
+        if (casinoChip != null) {
+            casinoChip.setMoney(money);
+            return casinoChip;
+        }
+        else {
+            return null;
+        }
     }
 
 

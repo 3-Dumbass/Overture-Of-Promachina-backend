@@ -33,9 +33,25 @@ public class CasinoChipService {
     /** 보유 머니 변동 Service
      * @param chipDto
      * @return CasinoChip */
-    public CasinoChip chip_trade(ChipDto chipDto){
+    public CasinoChip chipUpdate(ChipDto chipDto){
 
         User user_data = userService.selectUserData(chipDto.getUser_id());
-        return casinoChipRepository.update(user_data, chipDto.getRate());
+        return casinoChipRepository.update(user_data, chipDto.getMoney());
+    }
+
+
+    /** 보유 칩 현황 반환
+     * @param chipDto
+     * @return CasinoChip*/
+    public Long chipReturn(ChipDto chipDto){
+
+        CasinoChip casinoChip = casinoChipRepository.selectById(chipDto.getUser_id());
+
+        if(casinoChip != null){
+            return casinoChip.getMoney();
+        }
+        else{
+            return null;
+        }
     }
 }
