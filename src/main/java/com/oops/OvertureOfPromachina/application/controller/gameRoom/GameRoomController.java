@@ -1,9 +1,7 @@
 package com.oops.OvertureOfPromachina.application.controller.gameRoom;
 
 import com.oops.OvertureOfPromachina.application.controller.gameRoom.dto.GameRoomCreateRequest;
-import com.oops.OvertureOfPromachina.application.controller.gameRoomRealTime.dto.GameRoomJoinRequest;
-import com.oops.OvertureOfPromachina.application.entity.GameRoom.GameRoom;
-import com.oops.OvertureOfPromachina.application.entity.user.User;
+import com.oops.OvertureOfPromachina.application.responseDto.gameRoom.GameRoomInfoResponse;
 import com.oops.OvertureOfPromachina.application.service.business.gameRoom.GameRoomService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -31,4 +29,13 @@ public class GameRoomController {
         return ResponseEntity.ok()
                 .body(result);
     }
+
+    @Operation(summary = "게임 룸 정보 가져오기", description = "게임 룸의 정보를 가져옴")
+    @PostMapping("/roomInfo")
+    public ResponseEntity<GameRoomInfoResponse> getRoomInfo(@RequestBody @Valid Long roomId){
+        GameRoomInfoResponse result = gameRoomService.getGameRoomInfo(roomId);
+        return ResponseEntity.ok()
+                .body(result);
+    }
+
 }
