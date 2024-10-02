@@ -22,6 +22,7 @@ public class CasinoChipController {
 
     private final CasinoChipService casinoChipService;
 
+    
     /** 보유 머니 변동 결과 반환 */
     @Operation(summary = "chip trade api", description = "보유 칩 업데이트 api")
     @PostMapping("/update")
@@ -32,6 +33,7 @@ public class CasinoChipController {
         return ResponseEntity.ok()
                 .body(casinoChip_data != null);
     }
+
 
     /** 보유 머니 반환 */
     @Operation(summary = "chip money api", description = "보유 칩 현황 api")
