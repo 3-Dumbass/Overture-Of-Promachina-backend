@@ -38,6 +38,6 @@ public class Game {
                 break;
             }
         }
-        return true;
+        return finish;
     }
 }
