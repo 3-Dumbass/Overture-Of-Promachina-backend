@@ -2,8 +2,10 @@ package com.oops.OvertureOfPromachina.application.service.business.gameRoom;
 
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.GameRoom;
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameModeEnum;
+import com.oops.OvertureOfPromachina.application.entity.casinoChip.CasinoChip;
 import com.oops.OvertureOfPromachina.application.entity.gameRoomParticipant.GameRoomParticipant;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
+import com.oops.OvertureOfPromachina.application.repository.CasinoChip.CasinoChipRepository;
 import com.oops.OvertureOfPromachina.application.repository.User.UserRepository;
 import com.oops.OvertureOfPromachina.application.repository.gameRoom.GameRoomRepository;
 import com.oops.OvertureOfPromachina.application.repository.gameRoomParticipant.GameRoomParticipantRepository;
@@ -21,15 +23,17 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional
-class GameRoomServiceImpl implements GameRoomService{
+class GameRoomServiceImpl implements GameRoomService {
 
     private final GameRoomDomainLogic gameRoomDomainLogic;
     private final GameRoomRepository gameRoomRepository;
     private final GameRoomParticipantRepository gameRoomParticipantRepository;
     private final UserRepository userRepository;
+    private final CasinoChipRepository casinoChipRepository;
 
     @Override
-    public Long makeRoom(String title,String  gameMode) {
+
+    public Long makeRoom(String title, String gameMode) {
         GameModeEnum gameModeEnum = GameModeEnum.valueOf(gameMode);
         GameRoom gameRoom = gameRoomDomainLogic.makeGameRoom(title, gameModeEnum);
         gameRoomRepository.save(gameRoom);
@@ -42,8 +46,9 @@ class GameRoomServiceImpl implements GameRoomService{
     }
 
     @Override
-    public GameRoomRealTimeResponse<GameRoomJoinData> joinToGameRoom(Long gameRoomId,Long userId) {
-        User user = null;
+    public GameRoomRealTimeResponse<GameRoomJoinData> joinToGameRoom(Long gameRoomId, Long userId) {
+        User user = userRepository.userFindById(userId);
+        CasinoChip casinoChip = casinoChipRepository.selectById(userId);
         GameRoom gameRoom = gameRoomRepository.findById(gameRoomId);
 
         GameRoomParticipant gameRoomParticipant = new GameRoomParticipant(gameRoom, user);
@@ -51,8 +56,10 @@ class GameRoomServiceImpl implements GameRoomService{
         return new GameRoomRealTimeResponse<>(
                 MessageType.JOIN,
                 new GameRoomJoinData(
-                        user.getNickname().getNickname()
-                )
+                        userId,
+                        user.getNickname().getNickname(),
+                        casinoChip.getMoney()
+                        )
         );
     }
 
@@ -64,6 +71,7 @@ class GameRoomServiceImpl implements GameRoomService{
     @Override
     public GameRoomInfoResponse getGameRoomInfo(Long roomId) {
         List<User> users = gameRoomParticipantRepository.findAllUserByRoomId(roomId);
+        //TODO: 돈 내역이 들어가도록 수정
         GameRoomInfoResponse gameRoomInfoResponse = new GameRoomInfoResponse(users);
         return gameRoomInfoResponse;
     }
