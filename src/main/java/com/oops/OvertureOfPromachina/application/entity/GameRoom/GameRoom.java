@@ -2,6 +2,7 @@ package com.oops.OvertureOfPromachina.application.entity.GameRoom;
 
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameMode;
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameModeEnum;
+import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameRoomTitle;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -24,11 +25,15 @@ public class GameRoom {
     @Embedded
     private GameMode gameMode;
 
+    @Embedded
+    private GameRoomTitle title;
+
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createTime;
 
-    public GameRoom(GameModeEnum gameMode) {
+    public GameRoom(String title, GameModeEnum gameMode) {
         this.gameMode = new GameMode(gameMode);
+        this.title = new GameRoomTitle(title);
     }
 }

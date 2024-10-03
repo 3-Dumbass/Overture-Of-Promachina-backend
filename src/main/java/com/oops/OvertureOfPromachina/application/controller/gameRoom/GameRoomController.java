@@ -25,7 +25,8 @@ public class GameRoomController {
     @PostMapping("/create")
     public ResponseEntity<Long> createGameRoom(@RequestBody @Valid GameRoomCreateRequest gameRoomCreateRequest){
         log.info(gameRoomCreateRequest.getGameMode());
-        Long result = gameRoomService.makeRoom(gameRoomCreateRequest.getGameMode());
+        Long result =
+                gameRoomService.makeRoom(gameRoomCreateRequest.getRoomName(),gameRoomCreateRequest.getGameMode());
         return ResponseEntity.ok()
                 .body(result);
     }
