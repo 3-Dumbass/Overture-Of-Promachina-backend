@@ -14,7 +14,7 @@ public class GameRoomRepositoryTest extends SpringTestSetting {
 
     @Test
     void saveTest(){
-        GameRoom gameRoom = new GameRoom(GameModeEnum.WINNER_DISTRIBUTION);
+        GameRoom gameRoom = new GameRoom("test",GameModeEnum.WINNER_DISTRIBUTION);
 
         Long id = gameRoomRepository.save(gameRoom);
 

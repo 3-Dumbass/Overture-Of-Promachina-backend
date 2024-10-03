@@ -15,7 +15,7 @@ public class GameRoomServiceTest extends SpringTestSetting {
     @Test
     void makeGameRoomTest(){
         String gameMode = "WINNER_TAKE_ALL";
-        Long id = gameRoomService.makeRoom(gameMode);
+        Long id = gameRoomService.makeRoom("test",gameMode);
 
         GameRoom result = gameRoomService.findGameRoomById(id);
 

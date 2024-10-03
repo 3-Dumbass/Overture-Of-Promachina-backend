@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class GameRoomDomainLogic {
 
-    public GameRoom makeGameRoom(GameModeEnum gameMode){
-        return new GameRoom(gameMode);
+    public GameRoom makeGameRoom(String title, GameModeEnum gameMode){
+        return new GameRoom(title, gameMode);
     }
 }

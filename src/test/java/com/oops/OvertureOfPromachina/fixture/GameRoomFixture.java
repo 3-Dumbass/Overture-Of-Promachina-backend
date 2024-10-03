@@ -5,6 +5,6 @@ import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.Gam
 
 public class GameRoomFixture {
     public GameRoom create(){
-        return new GameRoom(GameModeEnum.WINNER_DISTRIBUTION);
+        return new GameRoom("test",GameModeEnum.WINNER_DISTRIBUTION);
     }
 }
