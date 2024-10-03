@@ -21,7 +21,7 @@ public class GameRoomController {
     private final GameRoomService gameRoomService;
 
 
-    @Operation(summary = "게임룸 제작", description = "게임룸을 제작합니다")
+    @Operation(summary = "게임룸 제작", description = "게임룸을 제작함")
     @PostMapping("/create")
     public ResponseEntity<Long> createGameRoom(@RequestBody @Valid GameRoomCreateRequest gameRoomCreateRequest){
         log.info(gameRoomCreateRequest.getGameMode());
@@ -30,7 +30,7 @@ public class GameRoomController {
                 .body(result);
     }
 
-    @Operation(summary = "게임 룸 정보 가져오기", description = "게임 룸의 정보를 가져옴")
+    @Operation(summary = "게임 룸 정보 가져오기", description = "게임 룸에 처음 입장했을 때 해당 룸에 들어가있는 사람들에 대한 정보를 알려줌")
     @PostMapping("/roomInfo")
     public ResponseEntity<GameRoomInfoResponse> getRoomInfo(@RequestBody @Valid Long roomId){
         GameRoomInfoResponse result = gameRoomService.getGameRoomInfo(roomId);

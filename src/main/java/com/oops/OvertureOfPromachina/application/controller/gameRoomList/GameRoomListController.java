@@ -20,7 +20,7 @@ public class GameRoomListController {
     private final GameRoomListService gameRoomListService;
 
 
-    @Operation(summary = "학과 공지 게시글 리스트 조회", description = "학과 공지 게시글의 리스트 조회를 조회합니다")
+    @Operation(summary = "게임룸 리스트 조회", description = "게임룸들에 대한 정보들을 페이지 단위로 조회함")
     @GetMapping("/list")
     public ResponseEntity<PaginationResultResponse<GameRoomMetadataResponse>> getGameRoomList(
             @RequestParam(defaultValue = "0")@Parameter(description = "현재 페이지")Long page,
