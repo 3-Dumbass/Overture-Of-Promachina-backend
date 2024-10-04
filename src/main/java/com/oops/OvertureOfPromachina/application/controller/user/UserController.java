@@ -30,18 +30,21 @@ public class UserController {
 
     @Operation(summary = "user image select", description = "유저 이미지 조회 api")
     @PostMapping("/image-select")
-    public ResponseEntity<ImageDto> user_image_select(@RequestBody @Valid ImageDto imageDto) {
+    public ResponseEntity<UserDto> user_image_select(@RequestBody @Valid UserDto userDto) {
+
+        String image_url = userService.selectUserImage(userDto);
+        userDto.setImage_url(image_url);
 
         return ResponseEntity.ok()
-                .body(userService.selectUserImageData(imageDto.getUser_id()));
+                .body(userDto);
     }
 
 
     @Operation(summary = "user image update", description = "유저 이미지 수정 api")
     @PostMapping("/image-update")
-    public ResponseEntity<Boolean> user_image_update(@RequestBody @Valid ImageDto imageDto) {
+    public ResponseEntity<Boolean> user_image_update(@RequestBody @Valid UserDto userDto) {
 
         return ResponseEntity.ok()
-                .body(userService.updateUserImage(imageDto.getUser_id(), imageDto.getUser_image_url()));
+                .body(userService.updateUserImage(userDto.getUser_id(), userDto.getImage_url()));
     }
 }

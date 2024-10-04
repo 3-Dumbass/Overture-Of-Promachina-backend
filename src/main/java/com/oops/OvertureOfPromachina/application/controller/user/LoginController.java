@@ -36,7 +36,7 @@ public class LoginController {
         }
         else {
             // account와 priKey를 userDto에 넣어 return
-            UserDto userDto = new UserDto(user_data.getId(), user_data.getNickname().getNickname(), user_data.getUserImageUrl(), null);
+            UserDto userDto = new UserDto(user_data.getId(), user_data.getNickname().getNickname(), null, null);
             return ResponseEntity.ok()
                     .body(userDto);
         }

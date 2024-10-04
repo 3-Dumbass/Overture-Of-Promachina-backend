@@ -2,6 +2,7 @@ package com.oops.OvertureOfPromachina.application.service.business.User;
 
 import com.oops.OvertureOfPromachina.application.controller.user.dto.ImageDto;
 import com.oops.OvertureOfPromachina.application.controller.user.dto.LoginDto;
+import com.oops.OvertureOfPromachina.application.controller.user.dto.UserDto;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.repository.User.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -67,10 +68,10 @@ public class UserService {
 
     /** 유저 이미지 select
      * @return ImageDto or null */
-    public ImageDto selectUserImageData(Long id){
+    public String selectUserImage(UserDto userDto){
 
-        User user_data = userRepository.userFindById(id);
-        return new ImageDto(id, user_data.getUserImageUrl());
+        User user_data = userRepository.userFindById(userDto.getUser_id());
+        return user_data.getUserImageUrl();
     }
 
 
