@@ -27,16 +27,6 @@ public class UserController {
     private final UserService userService;
     private final AccountService accountService;
 
-    /** dto는 account 만드는동안 업데이트 예정 */
-    @Operation(summary = "user-account", description = "유저 계좌 조회 api")
-    @PostMapping("/account")
-    public ResponseEntity<UserDto> user_account(@RequestBody @Valid UserDto userDto) {
-
-        List<Account> account = accountService.getAccounts(userDto);
-        return ResponseEntity.ok()
-                .body(new UserDto(userDto.getUser_id(), account));
-    }
-
 
     @Operation(summary = "user image select", description = "유저 이미지 조회 api")
     @PostMapping("/image-select")
