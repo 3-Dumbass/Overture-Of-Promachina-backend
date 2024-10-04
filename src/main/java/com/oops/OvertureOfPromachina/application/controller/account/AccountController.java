@@ -25,7 +25,6 @@ public class AccountController {
     private final AccountService accountService;
 
 
-    /** AccountDto로 들어온 지갑계좌 정보 저장 */
     @Operation(summary = "account-save", description = "유저 계좌 추가 api")
     @PostMapping("/save")
     public ResponseEntity<Boolean> user_account(@RequestBody @Valid AccountDto accountDto) {
@@ -36,7 +35,6 @@ public class AccountController {
     }
 
 
-    /** dto는 account 만드는동안 업데이트 예정 */
     @Operation(summary = "account-select", description = "유저 계좌 조회 api")
     @PostMapping("/select")
     public ResponseEntity<UserDto> user_account(@RequestBody @Valid UserDto userDto) {

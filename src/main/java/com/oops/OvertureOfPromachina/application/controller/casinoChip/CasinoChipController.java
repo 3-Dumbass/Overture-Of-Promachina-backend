@@ -2,6 +2,7 @@ package com.oops.OvertureOfPromachina.application.controller.casinoChip;
 
 
 import com.oops.OvertureOfPromachina.application.controller.casinoChip.dto.ChipDto;
+import com.oops.OvertureOfPromachina.application.controller.user.dto.UserDto;
 import com.oops.OvertureOfPromachina.application.entity.casinoChip.CasinoChip;
 import com.oops.OvertureOfPromachina.application.service.business.CasinoChip.CasinoChipService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -36,15 +37,15 @@ public class CasinoChipController {
 
 
     /** 보유 머니 반환 */
-    @Operation(summary = "chip money api", description = "보유 칩 현황 api")
+    @Operation(summary = "chip money api", description = "보유 칩 조회 api")
     @PostMapping("/return")
-    public ResponseEntity<ChipDto> chipReturn(@RequestBody @Valid ChipDto chipDto) {
+    public ResponseEntity<UserDto> chipReturn(@RequestBody @Valid UserDto userDto) {
 
-        Long money = casinoChipService.chipReturn(chipDto);
-        chipDto.setMoney(money);
+        Long money = casinoChipService.chipReturn(userDto);
+        userDto.setChip(money);
 
         return ResponseEntity.ok()
-                .body(chipDto);
+                .body(userDto);
     }
 
 }
