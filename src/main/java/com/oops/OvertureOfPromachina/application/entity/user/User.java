@@ -27,10 +27,13 @@ public class User {
     @Embedded
     private UserPassword pwd;
 
+    @Column(name = "user_image_url")
+    private String userImageUrl;
 
-    public User(String  nickname, String  loginId, String  pwd) {
+    public User(String  nickname, String  loginId, String  pwd, String userImageUrl) {
         this.nickname = new UserNickname(nickname);
         this.loginId = new UserLoginId(loginId);
         this.pwd = new UserPassword(pwd);
+        this.userImageUrl = userImageUrl;
     }
 }

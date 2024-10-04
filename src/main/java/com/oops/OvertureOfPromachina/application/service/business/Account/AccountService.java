@@ -31,7 +31,7 @@ public class AccountService {
 
     public List<Account> getAccounts(UserDto userDto) {
 
-        return accountRepository.findAccount(userDto.getId());
+        return accountRepository.findAccount(userDto.getUser_id());
     }
 
 

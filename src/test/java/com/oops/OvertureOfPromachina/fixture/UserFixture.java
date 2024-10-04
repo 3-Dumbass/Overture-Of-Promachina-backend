@@ -6,6 +6,6 @@ import com.oops.OvertureOfPromachina.application.entity.user.User;
 public class UserFixture {
     static public User create(){
 
-        return new User("test", "testLoginId", "testpwd");
+        return new User("test", "testLoginId", "testpwd","1");
     }
 }

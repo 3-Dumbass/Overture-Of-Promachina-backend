@@ -1,6 +1,8 @@
 package com.oops.OvertureOfPromachina.application.service.business.User;
 
+import com.oops.OvertureOfPromachina.application.controller.user.dto.ImageDto;
 import com.oops.OvertureOfPromachina.application.controller.user.dto.LoginDto;
+import com.oops.OvertureOfPromachina.application.controller.user.dto.UserDto;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.repository.User.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -57,10 +59,34 @@ public class UserService {
     /** nickname 기반 user_data 반환
      * 성공시 user_data
      * 실패시 null */
-    public User selectUserData(long id){
+    public User selectUserData(Long id){
 
         User user_data = userRepository.userFindById(id);
         return user_data;
     }
+
+
+    /** 유저 이미지 select
+     * @return ImageDto or null */
+    public String selectUserImage(UserDto userDto){
+
+        User user_data = userRepository.userFindById(userDto.getUser_id());
+        return user_data.getUserImageUrl();
+    }
+
+
+    /** 유저 이미지 update
+     * @params user_id, image_url
+     * @return Boolean */
+    public Boolean updateUserImage(Long user_id, String image_url){
+
+        User user_data = userRepository.userFindById(user_id);
+
+        User update_data = userRepository.userImageUpdate(user_data, image_url);
+
+        return update_data.getUserImageUrl().equals(image_url);
+    }
+
+
 
 }

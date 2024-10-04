@@ -1,5 +1,6 @@
 package com.oops.OvertureOfPromachina.application.controller.user;
 
+import com.oops.OvertureOfPromachina.application.controller.user.dto.ImageDto;
 import com.oops.OvertureOfPromachina.application.controller.user.dto.UserDto;
 import com.oops.OvertureOfPromachina.application.entity.account.Account;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
@@ -19,21 +20,31 @@ import java.util.List;
 
 @Tag(name = "User api", description = "유저 정보 api")
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
     private final AccountService accountService;
 
-    /** dto는 account 만드는동안 업데이트 예정 */
-    @Operation(summary = "user-account", description = "id 값을 통해 userDto 반환")
-    @PostMapping("/account")
-    public ResponseEntity<UserDto> user_account(@RequestBody @Valid UserDto userDto) {
 
-        List<Account> account = accountService.getAccounts(userDto);
+    @Operation(summary = "user image select", description = "유저 이미지 조회 api")
+    @PostMapping("/image-select")
+    public ResponseEntity<UserDto> user_image_select(@RequestBody @Valid UserDto userDto) {
+
+        String image_url = userService.selectUserImage(userDto);
+        userDto.setImage_url(image_url);
+
         return ResponseEntity.ok()
-                .body(new UserDto(userDto.getId(), account));
+                .body(userDto);
+    }
 
+
+    @Operation(summary = "user image update", description = "유저 이미지 수정 api")
+    @PostMapping("/image-update")
+    public ResponseEntity<Boolean> user_image_update(@RequestBody @Valid UserDto userDto) {
+
+        return ResponseEntity.ok()
+                .body(userService.updateUserImage(userDto.getUser_id(), userDto.getImage_url()));
     }
 }

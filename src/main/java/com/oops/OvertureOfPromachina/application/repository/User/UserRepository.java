@@ -6,25 +6,34 @@ public interface UserRepository {
 
     /** 회원 가입
      * LoginId를 통해 insert 성공여부 확인
-     * @param user_save
+     * @params user_save
      * @return LoginId */
     Long save(User user_save);
 
 
-    /** @param login_id,password
+
+
+
+    /** @params login_id, password
      * @return User */
     User userFind(String login_id, String password);
 
 
-    /** @param login_id
+    /** @params login_id
      * @return User */
     User userFindByLogin(String login_id);
 
 
-    /** @param nickname
-     * @User User */
+    /** @params nickname
+     * @return User */
     User userFindByNickname(String nickname);
 
 
-    User userFindById(Long id);
+    /** @params user_id
+     * @return User */
+    User userFindById(Long user_id);
+
+
+    /** @params user_data */
+    User userImageUpdate(User user_data, String image_path);
 }

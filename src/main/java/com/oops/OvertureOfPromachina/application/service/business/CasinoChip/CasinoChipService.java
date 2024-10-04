@@ -1,6 +1,7 @@
 package com.oops.OvertureOfPromachina.application.service.business.CasinoChip;
 
 import com.oops.OvertureOfPromachina.application.controller.casinoChip.dto.ChipDto;
+import com.oops.OvertureOfPromachina.application.controller.user.dto.UserDto;
 import com.oops.OvertureOfPromachina.application.entity.casinoChip.CasinoChip;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.repository.CasinoChip.CasinoChipRepository;
@@ -21,7 +22,7 @@ public class CasinoChipService {
 
 
     /** user의 기본 칩 생성
-     * @param user_data
+     * @params user_data
      * @return CasinoChip */
     public CasinoChip save(User user_data) {
         Long casino_id = casinoChipRepository.save(new CasinoChip(user_data, default_money));
@@ -31,7 +32,7 @@ public class CasinoChipService {
 
 
     /** 보유 머니 변동 Service
-     * @param chipDto
+     * @params chipDto
      * @return CasinoChip */
     public CasinoChip chipUpdate(ChipDto chipDto){
 
@@ -41,11 +42,11 @@ public class CasinoChipService {
 
 
     /** 보유 칩 현황 반환
-     * @param chipDto
+     * @params userDto
      * @return CasinoChip*/
-    public Long chipReturn(ChipDto chipDto){
+    public Long chipReturn(UserDto userDto){
 
-        CasinoChip casinoChip = casinoChipRepository.selectById(chipDto.getUser_id());
+        CasinoChip casinoChip = casinoChipRepository.selectById(userDto.getUser_id());
 
         if(casinoChip != null){
             return casinoChip.getMoney();

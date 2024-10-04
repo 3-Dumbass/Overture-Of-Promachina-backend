@@ -50,7 +50,7 @@ public class SignUpController {
     @PostMapping("/save")
     public ResponseEntity<Boolean> signup_check(@RequestBody @Valid LoginDto loginDto) {
 
-        Long user_id = userService.save(new User(loginDto.getLogin_id(), loginDto.getNickname(), loginDto.getPassword()));
+        Long user_id = userService.save(new User(loginDto.getLogin_id(), loginDto.getNickname(), loginDto.getPassword(), "1"));
 
         if(user_id != null) {
             User user_data = userService.selectUserData(user_id);
