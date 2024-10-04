@@ -1,5 +1,6 @@
 package com.oops.OvertureOfPromachina.application.service.business.User;
 
+import com.oops.OvertureOfPromachina.application.controller.user.dto.ImageDto;
 import com.oops.OvertureOfPromachina.application.controller.user.dto.LoginDto;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.repository.User.UserRepository;
@@ -61,6 +62,14 @@ public class UserService {
 
         User user_data = userRepository.userFindById(id);
         return user_data;
+    }
+
+    /** 유저 이미지 select
+     * @return ImageDto or null */
+    public ImageDto selectUserImageData(long id){
+
+        User user_data = userRepository.userFindById(id);
+        return new ImageDto(user_data.getUserImageUrl());
     }
 
 }
