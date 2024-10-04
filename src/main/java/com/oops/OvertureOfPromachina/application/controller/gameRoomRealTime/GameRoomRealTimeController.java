@@ -30,7 +30,7 @@ public class GameRoomRealTimeController {
     public ResponseEntity<GameRoomRealTimeResponse<GameRoomJoinData>> joinGameRoom(@DestinationVariable Long roomId,
                                                                                    @RequestBody @Valid GameRoomJoinRequest gameRoomJoinRequest){
         GameRoomRealTimeResponse<GameRoomJoinData> result =
-                gameRoomService.joinToGameRoom(roomId, gameRoomJoinRequest.getUserInfo().getId());
+                gameRoomService.joinToGameRoom(roomId, gameRoomJoinRequest.getUserInfo().getUser_id());
         return ResponseEntity.ok()
                 .body(result);
     }
