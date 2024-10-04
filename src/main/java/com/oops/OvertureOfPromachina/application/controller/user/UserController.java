@@ -34,15 +34,24 @@ public class UserController {
 
         List<Account> account = accountService.getAccounts(userDto);
         return ResponseEntity.ok()
-                .body(new UserDto(userDto.getId(), account));
+                .body(new UserDto(userDto.getUser_id(), account));
     }
 
 
-    @Operation(summary = "user-image", description = "유저 이미지 조회 api")
-    @PostMapping("/image")
-    public ResponseEntity<ImageDto> user_info(@RequestBody @Valid UserDto userDto) {
+    @Operation(summary = "user image select", description = "유저 이미지 조회 api")
+    @PostMapping("/image-select")
+    public ResponseEntity<ImageDto> user_image_select(@RequestBody @Valid ImageDto imageDto) {
 
         return ResponseEntity.ok()
-                .body(userService.selectUserImageData(userDto.getId()));
+                .body(userService.selectUserImageData(imageDto.getUser_id()));
+    }
+
+
+    @Operation(summary = "user image update", description = "유저 이미지 수정 api")
+    @PostMapping("/image-update")
+    public ResponseEntity<Boolean> user_image_update(@RequestBody @Valid ImageDto imageDto) {
+
+        return ResponseEntity.ok()
+                .body(userService.updateUserImage(imageDto.getUser_id(), imageDto.getUser_image_url()));
     }
 }

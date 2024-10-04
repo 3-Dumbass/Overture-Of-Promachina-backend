@@ -58,18 +58,34 @@ public class UserService {
     /** nickname 기반 user_data 반환
      * 성공시 user_data
      * 실패시 null */
-    public User selectUserData(long id){
+    public User selectUserData(Long id){
 
         User user_data = userRepository.userFindById(id);
         return user_data;
     }
 
+
     /** 유저 이미지 select
      * @return ImageDto or null */
-    public ImageDto selectUserImageData(long id){
+    public ImageDto selectUserImageData(Long id){
 
         User user_data = userRepository.userFindById(id);
-        return new ImageDto(user_data.getUserImageUrl());
+        return new ImageDto(id, user_data.getUserImageUrl());
     }
+
+
+    /** 유저 이미지 update
+     * @params user_id, image_url
+     * @return Boolean */
+    public Boolean updateUserImage(Long user_id, String image_url){
+
+        User user_data = userRepository.userFindById(user_id);
+
+        User update_data = userRepository.userImageUpdate(user_data, image_url);
+
+        return update_data.getUserImageUrl().equals(image_url);
+    }
+
+
 
 }

@@ -9,5 +9,6 @@ import lombok.*;
 @AllArgsConstructor
 public class ImageDto {
 
+    private Long user_id;
     private String user_image_url;
 }

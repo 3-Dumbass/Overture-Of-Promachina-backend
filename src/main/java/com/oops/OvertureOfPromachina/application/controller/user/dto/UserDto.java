@@ -13,11 +13,11 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserDto {
 
-    private long id;
+    private Long user_id;
     private List<Account> account;
 
-    public UserDto(long id, List<Account> account) {
-        this.id = id;
+    public UserDto(Long user_id, List<Account> account) {
+        this.user_id = user_id;
         this.account = account;
     }
 }
