@@ -1,7 +1,7 @@
 package com.oops.OvertureOfPromachina.application.service.business.User;
 
-import com.oops.OvertureOfPromachina.application.controller.user.dto.ImageDto;
 import com.oops.OvertureOfPromachina.application.controller.user.dto.LoginDto;
+import com.oops.OvertureOfPromachina.application.controller.user.dto.SignupDto;
 import com.oops.OvertureOfPromachina.application.controller.user.dto.UserDto;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.repository.User.UserRepository;
@@ -51,7 +51,7 @@ public class UserService {
      * 실패시 null */
     public User loginUserData(LoginDto loginDto){
 
-        User user_data = userRepository.userFind(loginDto.getLogin_id(), loginDto.getPassword());
+        User user_data = userRepository.userFind(loginDto.getLoginId(), loginDto.getPassword());
         return user_data;
     }
 

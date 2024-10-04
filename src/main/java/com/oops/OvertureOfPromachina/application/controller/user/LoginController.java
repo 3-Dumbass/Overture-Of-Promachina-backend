@@ -1,6 +1,7 @@
 package com.oops.OvertureOfPromachina.application.controller.user;
 
 import com.oops.OvertureOfPromachina.application.controller.user.dto.LoginDto;
+import com.oops.OvertureOfPromachina.application.controller.user.dto.SignupDto;
 import com.oops.OvertureOfPromachina.application.controller.user.dto.UserDto;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.service.business.User.UserService;
@@ -25,10 +26,10 @@ public class LoginController {
 
     @Operation(summary = "login", description = "로그인")
     @PostMapping("/login")
-    public ResponseEntity<UserDto> login(@RequestBody @Valid LoginDto loginData) {
+    public ResponseEntity<UserDto> login(@RequestBody @Valid LoginDto loginDto) {
 
         // login 시 있는 유저인지 확인
-        User user_data = userService.loginUserData(loginData);
+        User user_data = userService.loginUserData(loginDto);
 
         if (user_data == null) {
             return ResponseEntity.ok()

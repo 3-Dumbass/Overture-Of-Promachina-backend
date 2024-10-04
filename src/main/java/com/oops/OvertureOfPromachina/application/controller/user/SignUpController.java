@@ -1,10 +1,8 @@
 package com.oops.OvertureOfPromachina.application.controller.user;
 
-import com.oops.OvertureOfPromachina.application.controller.user.dto.LoginDto;
+import com.oops.OvertureOfPromachina.application.controller.user.dto.SignupDto;
 import com.oops.OvertureOfPromachina.application.entity.casinoChip.CasinoChip;
 import com.oops.OvertureOfPromachina.application.entity.user.User;
-import com.oops.OvertureOfPromachina.application.entity.user.valueObject.UserAccount;
-import com.oops.OvertureOfPromachina.application.entity.user.valueObject.UserPrivateKey;
 import com.oops.OvertureOfPromachina.application.service.business.CasinoChip.CasinoChipService;
 import com.oops.OvertureOfPromachina.application.service.business.User.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,9 +26,9 @@ public class SignUpController {
 
     @Operation(summary = "login id 중복체크", description = "사용 가능한 id 인지 확인")
     @PostMapping("/login-id")
-    public ResponseEntity<Boolean> id_check(@RequestBody @Valid LoginDto loginDto) {
+    public ResponseEntity<Boolean> id_check(@RequestBody @Valid SignupDto signupDto) {
 
-        Boolean result = userService.duplicateLoginId(loginDto.getLogin_id());
+        Boolean result = userService.duplicateLoginId(signupDto.getLogin_id());
         return ResponseEntity.ok()
                 .body(result);
     }
@@ -38,9 +36,9 @@ public class SignUpController {
 
     @Operation(summary = "ninkname 중복체크", description = "사용 가능한 nickname인지 확인")
     @PostMapping("/nickname")
-    public ResponseEntity<Boolean> nickname_check(@RequestBody @Valid LoginDto loginDto) {
+    public ResponseEntity<Boolean> nickname_check(@RequestBody @Valid SignupDto signupDto) {
 
-        Boolean result = userService.duplicateNickname(loginDto.getNickname());
+        Boolean result = userService.duplicateNickname(signupDto.getNickname());
         return ResponseEntity.ok()
                 .body(result);
     }
@@ -48,9 +46,9 @@ public class SignUpController {
 
     @Operation(summary = "user sign up", description = "유저 회원가입 api")
     @PostMapping("/save")
-    public ResponseEntity<Boolean> signup_check(@RequestBody @Valid LoginDto loginDto) {
+    public ResponseEntity<Boolean> signup_save(@RequestBody @Valid SignupDto signupDto) {
 
-        Long user_id = userService.save(new User(loginDto.getLogin_id(), loginDto.getNickname(), loginDto.getPassword(), "1"));
+        Long user_id = userService.save(new User(signupDto.getLogin_id(), signupDto.getNickname(), signupDto.getPassword(), "1"));
 
         if(user_id != null) {
             User user_data = userService.selectUserData(user_id);

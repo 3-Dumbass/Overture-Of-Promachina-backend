@@ -8,8 +8,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class LoginDto {
+public class SignupDto {
 
-    private String loginId;
+    private String nickname;
+    private String login_id;
     private String password;
 }
