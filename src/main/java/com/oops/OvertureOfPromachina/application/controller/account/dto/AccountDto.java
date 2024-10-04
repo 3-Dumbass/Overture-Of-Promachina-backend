@@ -1,11 +1,11 @@
 package com.oops.OvertureOfPromachina.application.controller.account.dto;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class AccountDto {
     private Long user_id;
     private String accountKey;

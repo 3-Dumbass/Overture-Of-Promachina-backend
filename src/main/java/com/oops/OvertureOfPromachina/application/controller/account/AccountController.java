@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Tag(name = "account api", description = "지갑계좌 api")
@@ -40,7 +41,13 @@ public class AccountController {
     public ResponseEntity<UserDto> user_account(@RequestBody @Valid UserDto userDto) {
 
         List<Account> account = accountService.getAccounts(userDto);
-        userDto.setAccount(account);
+        List<AccountDto> accountDto = new ArrayList<AccountDto>();
+
+        for (Account a : account) {
+            accountDto.add(new AccountDto(userDto.getUser_id(), a.getAccountKey(), a.getPriKey()));
+        }
+
+        userDto.setAccount(accountDto);
         return ResponseEntity.ok()
                 .body(userDto);
     }

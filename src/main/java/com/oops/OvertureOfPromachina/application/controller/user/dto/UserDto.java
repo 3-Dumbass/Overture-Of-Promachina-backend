@@ -1,5 +1,6 @@
 package com.oops.OvertureOfPromachina.application.controller.user.dto;
 
+import com.oops.OvertureOfPromachina.application.controller.account.dto.AccountDto;
 import com.oops.OvertureOfPromachina.application.entity.account.Account;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -17,9 +18,9 @@ public class UserDto {
     private String nickname;
     private String image_url;
     private Long chip;
-    private List<Account> account;
+    private List<AccountDto> account;
 
-    public UserDto(Long user_id, String nickname, String image_url, Long chip, List<Account> account) {
+    public UserDto(Long user_id, String nickname, String image_url, Long chip, List<AccountDto> account) {
         this.user_id = user_id;
         this.nickname = nickname;
         this.image_url = image_url;

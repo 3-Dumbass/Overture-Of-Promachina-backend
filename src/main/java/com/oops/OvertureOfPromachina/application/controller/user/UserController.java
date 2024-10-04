@@ -25,7 +25,6 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-    private final AccountService accountService;
 
 
     @Operation(summary = "user image select", description = "유저 이미지 조회 api")
