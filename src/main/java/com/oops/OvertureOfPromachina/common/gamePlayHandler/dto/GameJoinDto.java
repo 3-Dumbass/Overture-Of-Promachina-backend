@@ -7,7 +7,7 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public class GameStartDto {
+public class GameJoinDto {
     private final Long roomId;
-    private final List<Long> userIds;
+    private final Long userId;
 }

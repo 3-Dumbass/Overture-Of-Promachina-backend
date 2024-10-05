@@ -3,6 +3,7 @@ package com.oops.OvertureOfPromachina.common.gamePlayHandler.object;
 import com.oops.OvertureOfPromachina.common.gamePlayHandler.object.type.GameStep;
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,11 +16,15 @@ public class Game {
     private Set<Long> finishPlayerIds;
     private GameStep gameStep;
 
-    public Game(Long roomId, List<Long> userIdList) {
+    public Game(Long roomId) {
         this.roomId = roomId;
-        this.playerList = userIdList.stream().map(Player::new).toList();
+        this.playerList = new ArrayList<>();
         this.finishPlayerIds = new ConcurrentSkipListSet<>();
-        this.gameStep = GameStep.PLAYING;
+        this.gameStep = GameStep.WAITING;
+    }
+
+    public void join(Long userId){
+        playerList.add(new Player(userId));
     }
 
     public void nextTurn(){

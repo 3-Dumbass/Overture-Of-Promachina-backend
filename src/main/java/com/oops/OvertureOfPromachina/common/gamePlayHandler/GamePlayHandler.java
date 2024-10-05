@@ -1,14 +1,21 @@
 package com.oops.OvertureOfPromachina.common.gamePlayHandler;
 
-import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.GameStartDto;
+import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.GameJoinDto;
+import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.GameMakeDto;
 
 public interface GamePlayHandler {
 
     /**
      * 요청 하는 방에 대해 게임을 시작함
-     * @param gameStartDto 시작할 게임에 대한 정보
+     * @param gameMakeDto 시작할 게임에 대한 정보
      */
-    void startGame(GameStartDto gameStartDto);
+    void makeGame(GameMakeDto gameMakeDto);
+
+    /**
+     * 해당 방에 가입함
+     * @param gameJoinDto
+     */
+    void joinGame(GameJoinDto gameJoinDto);
 
     /**
      * 다음턴으로 이동
