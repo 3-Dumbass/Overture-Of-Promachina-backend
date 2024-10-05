@@ -22,8 +22,12 @@ class GameRoomListServiceImpl implements GameRoomListService{
     @Override
     public PaginationResultResponse<GameRoomMetadataResponse> getGameRoomList(Long page, Long size) {
         List<GameRoomMetadataResponse> gameRoomList = gameRoomListRepository.getGameRoomList(page, size).stream()
-                .map(e ->new GameRoomMetadataResponse(e.getId(), e.getGameMode().getGameMode(), e.getCreateTime())
-        ).toList();
+                .map(e -> new GameRoomMetadataResponse(
+                        e.getId(),
+                        e.getTitle().getTitle(),
+                        e.getGameMode().getGameMode(),
+                        e.getCreateTime())
+                ).toList();
 
         Long totalElement = gameRoomListRepository.getAllGameRoomAmount();
         Long totalPage = paginationDomainLogic.calcTotalPage(totalElement, size);

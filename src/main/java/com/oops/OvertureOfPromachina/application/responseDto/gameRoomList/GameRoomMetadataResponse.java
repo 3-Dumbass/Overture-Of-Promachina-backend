@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class GameRoomMetadataResponse {
     private Long gameRoomId;
+    private String gameRoomTitle;
     private GameModeEnum gameMode;
     private LocalDateTime createTime;
 }
