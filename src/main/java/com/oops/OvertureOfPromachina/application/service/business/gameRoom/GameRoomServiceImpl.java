@@ -14,6 +14,8 @@ import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.Ga
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.data.GameRoomJoinData;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.type.MessageType;
 import com.oops.OvertureOfPromachina.application.service.domain.gameRoom.GameRoomDomainLogic;
+import com.oops.OvertureOfPromachina.common.gamePlayHandler.GamePlayHandler;
+import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.GameMakeDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +32,7 @@ class GameRoomServiceImpl implements GameRoomService {
     private final GameRoomParticipantRepository gameRoomParticipantRepository;
     private final UserRepository userRepository;
     private final CasinoChipRepository casinoChipRepository;
+    private final GamePlayHandler gamePlayHandler;
 
     @Override
 
@@ -37,6 +40,9 @@ class GameRoomServiceImpl implements GameRoomService {
         GameModeEnum gameModeEnum = GameModeEnum.valueOf(gameMode);
         GameRoom gameRoom = gameRoomDomainLogic.makeGameRoom(title, gameModeEnum);
         gameRoomRepository.save(gameRoom);
+        gamePlayHandler.makeGame(new GameMakeDto(
+                gameRoom.getId()
+        ));
         return gameRoom.getId();
     }
 
