@@ -8,6 +8,7 @@ import lombok.*;
 @Getter
 public class PlayerInfoResponse {
     private Long userId;
+    private String image;
 
     private String nickname;
 
