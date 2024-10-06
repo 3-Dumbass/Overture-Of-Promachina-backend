@@ -6,6 +6,7 @@ import com.oops.OvertureOfPromachina.application.entity.user.User;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoom.GameRoomInfoResponse;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.GameRoomRealTimeResponse;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.data.GameRoomJoinData;
+import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.data.GameRoomLeaveData;
 
 public interface GameRoomService {
 
@@ -26,10 +27,11 @@ public interface GameRoomService {
     GameRoomRealTimeResponse<GameRoomJoinData> joinToGameRoom(Long gameRoomId, Long userId);
 
     /**
-     * 유저가 참가중인 게임방을 나감
-     * @param user 나가고자 하는 유저
+     * 유저가 참가중인 게임룸을 나감
+     * @param gameRoomId 나갈 게임룸
+     * @param userId 나갈 유저
      */
-    void leaveGameRoom(User user);
+    GameRoomRealTimeResponse<GameRoomLeaveData> leaveGameRoom(Long gameRoomId, Long userId);
 
     /**
      * 해당 게임룸의 정보를 가져옴

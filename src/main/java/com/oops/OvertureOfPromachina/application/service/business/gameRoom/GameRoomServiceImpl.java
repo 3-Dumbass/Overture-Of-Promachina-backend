@@ -12,9 +12,11 @@ import com.oops.OvertureOfPromachina.application.repository.gameRoomParticipant.
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoom.GameRoomInfoResponse;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.GameRoomRealTimeResponse;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.data.GameRoomJoinData;
+import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.data.GameRoomLeaveData;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.type.MessageType;
 import com.oops.OvertureOfPromachina.application.service.domain.gameRoom.GameRoomDomainLogic;
 import com.oops.OvertureOfPromachina.common.gamePlayHandler.GamePlayHandler;
+import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.GameJoinDto;
 import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.GameMakeDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -58,6 +60,13 @@ class GameRoomServiceImpl implements GameRoomService {
         GameRoom gameRoom = gameRoomRepository.findById(gameRoomId);
 
         GameRoomParticipant gameRoomParticipant = new GameRoomParticipant(gameRoom, user);
+//        gamePlayHandler.joinGame(
+//                new GameJoinDto(
+//                        gameRoomId,
+//                        userId
+//                )
+//        );
+
         gameRoomParticipantRepository.save(gameRoomParticipant);
         return new GameRoomRealTimeResponse<>(
                 MessageType.JOIN,
@@ -70,8 +79,16 @@ class GameRoomServiceImpl implements GameRoomService {
     }
 
     @Override
-    public void leaveGameRoom(User user) {
+    public GameRoomRealTimeResponse<GameRoomLeaveData> leaveGameRoom(Long gameRoomId, Long userId) {
+        User user = userRepository.userFindById(userId);
+        gameRoomParticipantRepository.removeByUser(user);
 
+        return new GameRoomRealTimeResponse<>(
+                MessageType.LEAVE,
+                new GameRoomLeaveData(
+                        userId
+                )
+        );
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.oops.OvertureOfPromachina.common.gamePlayHandler;
 
 import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.GameJoinDto;
+import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.GameLeaveDto;
 import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.GameMakeDto;
 
 public interface GamePlayHandler {
@@ -16,6 +17,12 @@ public interface GamePlayHandler {
      * @param gameJoinDto
      */
     void joinGame(GameJoinDto gameJoinDto);
+
+    /**
+     * 해당 게임에서 나감
+     * @param gameLeaveDto 나가는 사람에 대한 정보
+     */
+    void leaveGame(GameLeaveDto gameLeaveDto);
 
     /**
      * 다음턴으로 이동
