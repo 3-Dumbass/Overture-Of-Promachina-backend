@@ -27,7 +27,7 @@ public class CasinoChipController {
     /** 보유 머니 변동 결과 반환 */
     @Operation(summary = "chip trade api", description = "보유 칩 업데이트 api")
     @PostMapping("/update")
-    public ResponseEntity<Boolean> chipUpdate(@RequestBody @Valid ChipDto chipDto) {
+    public ResponseEntity<Boolean> chip_update(@RequestBody @Valid ChipDto chipDto) {
 
         CasinoChip casinoChip_data = casinoChipService.chipUpdate(chipDto);
 
@@ -38,8 +38,8 @@ public class CasinoChipController {
 
     /** 보유 머니 반환 */
     @Operation(summary = "chip money api", description = "보유 칩 조회 api")
-    @PostMapping("/return")
-    public ResponseEntity<UserDto> chipReturn(@RequestBody @Valid UserDto userDto) {
+    @PostMapping("/select")
+    public ResponseEntity<UserDto> chip_select(@RequestBody @Valid UserDto userDto) {
 
         Long money = casinoChipService.chipReturn(userDto);
         userDto.setChip(money);

@@ -27,8 +27,8 @@ public class AccountController {
 
 
     @Operation(summary = "account-save", description = "유저 계좌 추가 api")
-    @PostMapping("/save")
-    public ResponseEntity<Boolean> user_account(@RequestBody @Valid AccountDto accountDto) {
+    @PostMapping("/add")
+    public ResponseEntity<Boolean> account_add(@RequestBody @Valid AccountDto accountDto) {
 
         return ResponseEntity.ok()
                 .body(accountService.saveAccount(accountDto));
@@ -38,7 +38,7 @@ public class AccountController {
 
     @Operation(summary = "account-select", description = "유저 계좌 조회 api")
     @PostMapping("/select")
-    public ResponseEntity<UserDto> user_account(@RequestBody @Valid UserDto userDto) {
+    public ResponseEntity<UserDto> account_select(@RequestBody @Valid UserDto userDto) {
 
         List<Account> account = accountService.getAccounts(userDto);
         List<AccountDto> accountDto = new ArrayList<AccountDto>();
