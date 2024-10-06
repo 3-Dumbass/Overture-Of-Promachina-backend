@@ -10,6 +10,7 @@ import com.oops.OvertureOfPromachina.application.repository.User.UserRepository;
 import com.oops.OvertureOfPromachina.application.repository.gameRoom.GameRoomRepository;
 import com.oops.OvertureOfPromachina.application.repository.gameRoomParticipant.GameRoomParticipantRepository;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoom.GameRoomInfoResponse;
+import com.oops.OvertureOfPromachina.application.responseDto.gameRoom.PlayerInfoResponse;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.GameRoomRealTimeResponse;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.data.GameRoomJoinData;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoomRealTime.data.GameRoomLeaveData;
@@ -94,8 +95,14 @@ class GameRoomServiceImpl implements GameRoomService {
     @Override
     public GameRoomInfoResponse getGameRoomInfo(Long roomId) {
         List<User> users = gameRoomParticipantRepository.findAllUserByRoomId(roomId);
-        //TODO: 돈 내역이 들어가도록 수정
-        GameRoomInfoResponse gameRoomInfoResponse = new GameRoomInfoResponse(users);
+
+        List<PlayerInfoResponse> players = users.stream().map(user -> new PlayerInfoResponse(
+                user.getId(),
+                user.getUserImageUrl(),
+                user.getNickname().getNickname(),
+                casinoChipRepository.selectById(user.getId()).getMoney()
+        )).toList();
+        GameRoomInfoResponse gameRoomInfoResponse = new GameRoomInfoResponse(players);
         return gameRoomInfoResponse;
     }
 

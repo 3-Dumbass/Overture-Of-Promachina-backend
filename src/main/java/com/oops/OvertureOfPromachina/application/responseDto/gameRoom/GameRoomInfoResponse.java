@@ -9,12 +9,7 @@ import java.util.List;
 public class GameRoomInfoResponse {
     List<PlayerInfoResponse> playerList;
 
-    public GameRoomInfoResponse(List<User> users) {
-        this.playerList = users.stream().map(user -> new PlayerInfoResponse(
-                user.getId(),
-                user.getUserImageUrl(),
-                user.getNickname().getNickname(),
-                0L
-        )).toList();
+    public GameRoomInfoResponse(List<PlayerInfoResponse> players) {
+        this.playerList = players;
     }
 }
