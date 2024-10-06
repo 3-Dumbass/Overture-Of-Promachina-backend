@@ -1,6 +1,7 @@
 package com.oops.OvertureOfPromachina.application.controller.gameRoom;
 
 import com.oops.OvertureOfPromachina.application.controller.gameRoom.dto.GameRoomCreateRequest;
+import com.oops.OvertureOfPromachina.application.controller.gameRoom.dto.RoomInfoRequest;
 import com.oops.OvertureOfPromachina.application.responseDto.gameRoom.GameRoomInfoResponse;
 import com.oops.OvertureOfPromachina.application.service.business.gameRoom.GameRoomService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -8,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,9 +34,10 @@ public class GameRoomController {
     }
 
     @Operation(summary = "게임 룸 정보 가져오기", description = "게임 룸에 처음 입장했을 때 해당 룸에 들어가있는 사람들에 대한 정보를 알려줌")
-    @PostMapping("/roomInfo")
-    public ResponseEntity<GameRoomInfoResponse> getRoomInfo(@RequestBody @Valid Long roomId){
-        GameRoomInfoResponse result = gameRoomService.getGameRoomInfo(roomId);
+    @PostMapping(value = "/roomInfo")
+    public ResponseEntity<GameRoomInfoResponse> getRoomInfo(@RequestBody @Valid RoomInfoRequest roomInfoRequest){
+        log.info(roomInfoRequest.getRoomId().toString());
+        GameRoomInfoResponse result = gameRoomService.getGameRoomInfo(roomInfoRequest.getRoomId());
         return ResponseEntity.ok()
                 .body(result);
     }
