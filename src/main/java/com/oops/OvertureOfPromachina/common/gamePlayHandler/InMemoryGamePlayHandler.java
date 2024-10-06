@@ -1,6 +1,7 @@
 package com.oops.OvertureOfPromachina.common.gamePlayHandler;
 
 import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.GameJoinDto;
+import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.GameLeaveDto;
 import com.oops.OvertureOfPromachina.common.gamePlayHandler.dto.GameMakeDto;
 import com.oops.OvertureOfPromachina.common.gamePlayHandler.object.Game;
 import com.oops.OvertureOfPromachina.common.gamePlayHandler.object.type.GameStep;
@@ -29,6 +30,11 @@ public class InMemoryGamePlayHandler implements GamePlayHandler{
         Game game = gameList.get(gameJoinDto.getRoomId());
         if(game.getGameStep()!= GameStep.WAITING)
         game.join(gameJoinDto.getUserId());
+    }
+
+    @Override
+    public void leaveGame(GameLeaveDto gameLeaveDto) {
+
     }
 
     @Override
