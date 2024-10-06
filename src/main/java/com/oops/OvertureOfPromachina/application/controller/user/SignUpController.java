@@ -46,18 +46,25 @@ public class SignUpController {
 
     @Operation(summary = "user sign up", description = "유저 회원가입 api")
     @PostMapping("/save")
-    public ResponseEntity<Boolean> signup_save(@RequestBody @Valid SignupDto signupDto) {
+    public ResponseEntity<SignupDto> signup_save(@RequestBody @Valid SignupDto signupDto) {
 
         Long user_id = userService.save(new User(signupDto.getNickname(), signupDto.getLogin_id(), signupDto.getPassword(), "1"));
 
         if(user_id != null) {
             User user_data = userService.selectUserData(user_id);
             CasinoChip casinoChip_data = casinoChipService.save(user_data);
-            return ResponseEntity.ok()
-                    .body(casinoChip_data != null);
+
+            if(casinoChip_data != null) {
+                signupDto.setUser_id(user_id);
+
+                return ResponseEntity.ok()
+                        .body(signupDto);
+            }
+
         }
+
         return ResponseEntity.ok()
-                .body(false);
+                .body(null);
     }
 
 }
