@@ -19,7 +19,7 @@ import java.util.List;
 
 @Tag(name = "account api", description = "지갑계좌 api")
 @RestController
-@RequestMapping("/account")
+@RequestMapping("/api/account")
 @RequiredArgsConstructor
 public class AccountController {
 

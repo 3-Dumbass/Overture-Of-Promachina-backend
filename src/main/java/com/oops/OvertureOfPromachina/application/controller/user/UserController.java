@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 @Tag(name = "User api", description = "유저 정보 api")
 @RestController
@@ -27,7 +26,7 @@ public class UserController {
     private final UserService userService;
 
 
-    @Operation(summary = "user image select", description = "유저 이미지 조회 api")
+    @Operation(summary = "user image select api", description = "유저 이미지 조회 api")
     @PostMapping("/image-select")
     public ResponseEntity<UserDto> user_image_select(@RequestBody @Valid UserDto userDto) {
 
@@ -39,7 +38,7 @@ public class UserController {
     }
 
 
-    @Operation(summary = "user image update", description = "유저 이미지 수정 api")
+    @Operation(summary = "user image update api", description = "유저 이미지 수정 api")
     @PostMapping("/image-update")
     public ResponseEntity<Boolean> user_image_update(@RequestBody @Valid UserDto userDto) {
 
