@@ -4,7 +4,7 @@ import com.oops.OvertureOfPromachina.application.entity.GameRoom.GameRoom;
 import com.oops.OvertureOfPromachina.application.entity.GameRoom.valueObject.GameModeEnum;
 
 public class GameRoomFixture {
-    public GameRoom create(){
+    public static GameRoom create(){
         return new GameRoom("test",GameModeEnum.WINNER_DISTRIBUTION);
     }
 }
